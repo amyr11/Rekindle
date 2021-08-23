@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "430626030464",
+    "project_id": "rekindle-5a58b",
+    "storage_bucket": "rekindle-5a58b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:430626030464:android:5d480bcf002adc26957765",
+        "android_client_info": {
+          "package_name": "com.runtimeterror.rekindle"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "430626030464-sh814ferrcqero8lbe7u5briaft988d0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRtF0zd1XOLlePCMjpfRdMgSWJogfFYas"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "430626030464-sh814ferrcqero8lbe7u5briaft988d0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
