@@ -9,4 +9,7 @@
     <color name="green_dark">#253411</color>
     <color name="orange_light">#CE4A19</color>
     <color name="orange_dark">#3E1E12</color>
+    <color name="gold">#EBA302</color>
+    <color name="silver">#9F9F9F</color>
+    <color name="bronze">#A07921</color>
 </resources>
