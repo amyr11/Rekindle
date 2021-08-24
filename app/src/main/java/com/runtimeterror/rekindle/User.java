@@ -4,13 +4,17 @@ public class User {
     private String userID;
     private String username;
     private String photoURL;
+    private int threadCount;
+    private int points;
 
     public User() {}
 
-    public User(String userID, String username, String photoURL) {
+    public User(String userID, String username, String photoURL, int threadCount, int points) {
         this.userID = userID;
         this.username = username;
         this.photoURL = photoURL;
+        this.threadCount = threadCount;
+        this.points = points;
     }
 
     public String getUserID() {
@@ -35,5 +39,21 @@ public class User {
 
     public void setPhotoURL(String photoURL) {
         this.photoURL = photoURL;
+    }
+
+    public int getThreadCount() {
+        return threadCount;
+    }
+
+    public void setThreadCount(int threadCount) {
+        this.threadCount = threadCount;
+    }
+
+    public int getPoints() {
+        return points;
+    }
+
+    public void setPoints(int points) {
+        this.points = points;
     }
 }
