@@ -6,15 +6,17 @@ public class User {
     private String photoURL;
     private int threadCount;
     private int points;
+    private boolean competitive;
 
     public User() {}
 
-    public User(String userID, String username, String photoURL, int threadCount, int points) {
+    public User(String userID, String username, String photoURL, int threadCount, int points, boolean competitive) {
         this.userID = userID;
         this.username = username;
         this.photoURL = photoURL;
         this.threadCount = threadCount;
         this.points = points;
+        this.competitive = competitive;
     }
 
     public String getUserID() {
@@ -55,5 +57,13 @@ public class User {
 
     public void setPoints(int points) {
         this.points = points;
+    }
+
+    public boolean isCompetitive() {
+        return competitive;
+    }
+
+    public void setCompetitive(boolean competitive) {
+        this.competitive = competitive;
     }
 }

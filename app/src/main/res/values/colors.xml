@@ -4,6 +4,7 @@
     <color name="black">#000000</color>
     <color name="purple_light">#5D449A</color>
     <color name="purple_dark">#251A43</color>
+    <color name="purple_on_card">#35255D</color>
     <color name="purple_bg">#151021</color>
     <color name="green_light">#1dcc0e</color>
     <color name="green_dark">#253411</color>

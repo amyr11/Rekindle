@@ -122,7 +122,8 @@ public class SignInActivity extends AppCompatActivity {
                 user.getDisplayName(),
                 user.getPhotoUrl().toString(),
                 0,
-                0
+                0,
+                false
         );
         //check if the user exists
         db.collection(Constants.COL_USERS)
