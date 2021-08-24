@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "430626030464",
+    "firebase_url": "https://rekindle-5a58b-default-rtdb.firebaseio.com",
     "project_id": "rekindle-5a58b",
     "storage_bucket": "rekindle-5a58b.appspot.com"
   },
@@ -13,6 +14,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "430626030464-mbpsmso4r1l7m261q9ipqi4hee2dhab3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.runtimeterror.rekindle",
+            "certificate_hash": "972d72ef88076d9079e383a66db531111c1a4d7d"
+          }
+        },
         {
           "client_id": "430626030464-sh814ferrcqero8lbe7u5briaft988d0.apps.googleusercontent.com",
           "client_type": 3
