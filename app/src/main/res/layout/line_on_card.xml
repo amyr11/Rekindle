@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<View xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="1dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/purple_on_card"
+    android:layout_marginStart="26dp"
+    tools:showIn="@layout/activity_settings">
+</View>
