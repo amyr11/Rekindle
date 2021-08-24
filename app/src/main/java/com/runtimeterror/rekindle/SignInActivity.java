@@ -30,12 +30,13 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class SignInActivity extends AppCompatActivity {
-    public static final String TAG = "RekindleTag";
+    public static final String TAG = Constants.TAG;
     private FirebaseAuth mAuth;
-    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private DBhelper db = new DBhelper();
     private GoogleSignInClient mGoogleSignInClient;
 
     private Button signInButton;
@@ -119,7 +120,11 @@ public class SignInActivity extends AppCompatActivity {
     }
 
     private void saveUserInformationToDB(FirebaseUser user) {
-        //TODO: save user information to DB
-
+        //save user information to DB
+        db.addUser(new User(
+                user.getUid(),
+                user.getDisplayName(),
+                user.getPhotoUrl().toString()
+        ));
     }
 }
