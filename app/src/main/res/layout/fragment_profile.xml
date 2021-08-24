@@ -1,17 +1,260 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileFragment"
-    android:background="@color/purple_bg">
+    android:background="@color/purple_bg"
+    tools:context=".ProfileFragment">
 
     <TextView
-        android:layout_centerInParent="true"
+        android:id="@+id/MyProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="30sp"
+        android:text="My Profile"
         android:textColor="@color/white"
-        android:text="@string/hello_blank_fragment" />
+        android:fontFamily="@font/roboto_medium"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0"
+        android:layout_marginTop="27dp"
+        android:layout_marginStart="26dp"/>
 
-</RelativeLayout>
+    <ImageView
+        android:id="@+id/settings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_button_settings"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0"
+        android:layout_marginTop="34dp"
+        android:layout_marginEnd="26dp"/>
+
+    <View
+        android:id="@+id/profilePic"
+        android:layout_width="106dp"
+        android:layout_height="106dp"
+        android:layout_marginTop="31dp"
+        android:background="@drawable/ic_view_profile_picture_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MyProfile"
+        app:layout_constraintVertical_bias="0.00" />
+
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Luwesss"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:fontFamily="@font/roboto_regular"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profilePic"
+        app:layout_constraintVertical_bias="0.00"
+        android:layout_marginTop="14dp"/>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="19dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/username"
+        app:layout_constraintVertical_bias="0"
+        android:layout_marginTop="1dp"
+        android:gravity="center">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="12dp"
+                android:src="@drawable/ic_view_thread_small"
+                android:layout_marginEnd="3dp">
+            </ImageView>
+            <TextView
+                android:id="@+id/numberOfThreads"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="32 Threads"
+                android:textColor="@color/purple_light"
+                android:fontFamily="@font/roboto_regular"
+                android:textSize="14sp">
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginStart="10dp">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="12dp"
+                android:src="@drawable/ic_view_fire">
+            </ImageView>
+            <TextView
+                android:id="@+id/numberOfPoints"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="540"
+                android:textColor="@color/purple_light"
+                android:fontFamily="@font/roboto_regular"
+                android:textSize="14sp"
+                android:layout_marginStart="3dp">
+            </TextView>
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/achievements"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_medium"
+        android:text="Achievements"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.00"
+        app:layout_constraintHorizontal_bias="0"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="36dp"/>
+
+    <View
+        android:id="@+id/achievementDivider1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginHorizontal="26dp"
+        android:layout_marginTop="12dp"
+        android:background="@color/purple_dark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/achievements"
+        app:layout_constraintVertical_bias="0.00" />
+
+    <View
+        android:id="@+id/firstPlace"
+        android:layout_width="38dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="19dp"
+        android:background="@drawable/ic_view_profile_picture_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/achievementDivider1"
+        app:layout_constraintVertical_bias="0" />
+
+    <TextView
+        android:id="@+id/numFirst"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/roboto_regular"
+        android:text="22 Threads"
+        android:textColor="@color/gold"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/firstPlace"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/firstPlace"
+        app:layout_constraintTop_toBottomOf="@+id/firstPlace"
+        app:layout_constraintVertical_bias="0" />
+
+    <View
+        android:id="@+id/secondPlace"
+        android:layout_width="38dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="56dp"
+        android:background="@drawable/ic_view_profile_picture_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/firstPlace"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/achievementDivider1"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintHorizontal_bias="1"/>
+
+    <TextView
+        android:id="@+id/numSecond"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/roboto_regular"
+        android:text="10 Threads"
+        android:textColor="@color/silver"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/secondPlace"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/secondPlace"
+        app:layout_constraintTop_toBottomOf="@+id/secondPlace"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <View
+        android:id="@+id/thirdPlace"
+        android:layout_width="38dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginStart="56dp"
+        android:background="@drawable/ic_view_profile_picture_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toEndOf="@+id/firstPlace"
+        app:layout_constraintTop_toBottomOf="@+id/achievementDivider1"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/numThird"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_regular"
+        android:layout_marginTop="8dp"
+        android:text="0 Thread"
+        android:textColor="@color/bronze"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/thirdPlace"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/thirdPlace"
+        app:layout_constraintTop_toBottomOf="@+id/thirdPlace"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <View
+        android:id="@+id/achievementDivider2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginHorizontal="26dp"
+        android:layout_marginTop="19dp"
+        android:background="@color/purple_dark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/numFirst"
+        app:layout_constraintVertical_bias="0" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
