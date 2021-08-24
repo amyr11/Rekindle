@@ -8,4 +8,6 @@
     android:background="@color/purple_bg"
     tools:context=".MainActivity">
 
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
