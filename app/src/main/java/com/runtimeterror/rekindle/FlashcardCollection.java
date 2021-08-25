@@ -1,18 +1,16 @@
 package com.runtimeterror.rekindle;
 
-import java.util.List;
-
 public class FlashcardCollection {
     private String titleFull;
     private String titleAbbr;
-    private String color;
+    private int theme;
 
     public FlashcardCollection() {}
 
-    public FlashcardCollection(String titleFull, String titleAbbr, String color) {
+    public FlashcardCollection(String titleFull, String titleAbbr, int theme) {
         this.titleFull = titleFull;
         this.titleAbbr = titleAbbr;
-        this.color = color;
+        this.theme = theme;
     }
 
     public String getTitleFull() {
@@ -31,11 +29,11 @@ public class FlashcardCollection {
         this.titleAbbr = titleAbbr;
     }
 
-    public String getColor() {
-        return color;
+    public int getTheme() {
+        return theme;
     }
 
-    public void setColor(String color) {
-        this.color = color;
+    public void setTheme(int theme) {
+        this.theme = theme;
     }
 }
