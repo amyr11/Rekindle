@@ -16,7 +16,7 @@
         <entry key="..\:/Users/Francisco-Belanio/Desktop/Files/Rekindle/Rekindle/app/src/main/res/drawable/panel_selector.xml" value="0.2203125" />
         <entry key="..\:/Users/Francisco-Belanio/Desktop/Files/Rekindle/Rekindle/app/src/main/res/layout/activity_all_flashcards.xml" value="0.25" />
         <entry key="..\:/Users/Francisco-Belanio/Desktop/Files/Rekindle/Rekindle/app/src/main/res/layout/activity_copy_thread_code.xml" value="0.14" />
-        <entry key="..\:/Users/Francisco-Belanio/Desktop/Files/Rekindle/Rekindle/app/src/main/res/layout/activity_create_flashcard.xml" value="0.18" />
+        <entry key="..\:/Users/Francisco-Belanio/Desktop/Files/Rekindle/Rekindle/app/src/main/res/layout/activity_create_flashcard.xml" value="0.5" />
         <entry key="..\:/Users/Francisco-Belanio/Desktop/Files/Rekindle/Rekindle/app/src/main/res/layout/activity_create_flashcard_collection.xml" value="0.12" />
         <entry key="..\:/Users/Francisco-Belanio/Desktop/Files/Rekindle/Rekindle/app/src/main/res/layout/activity_create_thread.xml" value="0.18" />
         <entry key="..\:/Users/Francisco-Belanio/Desktop/Files/Rekindle/Rekindle/app/src/main/res/layout/activity_join_existing_thread.xml" value="0.22" />
@@ -24,7 +24,7 @@
         <entry key="..\:/Users/Francisco-Belanio/Desktop/Files/Rekindle/Rekindle/app/src/main/res/layout/activity_review_flashcards.xml" value="0.2" />
         <entry key="..\:/Users/Francisco-Belanio/Desktop/Files/Rekindle/Rekindle/app/src/main/res/layout/activity_settings.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Francisco-Belanio/Desktop/Files/Rekindle/Rekindle/app/src/main/res/layout/activity_sign_in.xml" value="0.14628623188405798" />
-        <entry key="..\:/Users/Francisco-Belanio/Desktop/Files/Rekindle/Rekindle/app/src/main/res/layout/activity_thread_chat.xml" value="0.22" />
+        <entry key="..\:/Users/Francisco-Belanio/Desktop/Files/Rekindle/Rekindle/app/src/main/res/layout/activity_thread_chat.xml" value="0.16" />
         <entry key="..\:/Users/Francisco-Belanio/Desktop/Files/Rekindle/Rekindle/app/src/main/res/layout/back_without_header.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Francisco-Belanio/Desktop/Files/Rekindle/Rekindle/app/src/main/res/layout/fragment_home.xml" value="0.1" />
         <entry key="..\:/Users/Francisco-Belanio/Desktop/Files/Rekindle/Rekindle/app/src/main/res/layout/fragment_profile.xml" value="0.16" />
