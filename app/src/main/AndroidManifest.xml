@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Rekindle">
         <activity
+            android:name=".ReviewFlashcards"
+            android:exported="true" />
+        <activity
             android:name=".CreateFlashcard"
             android:exported="true" />
         <activity
