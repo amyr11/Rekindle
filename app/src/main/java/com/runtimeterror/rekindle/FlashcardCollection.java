@@ -31,7 +31,7 @@ public class FlashcardCollection {
             char chr = full.toUpperCase().charAt(i);
             if (!vowels.contains(chr) || i == 0) {
                 abbr.append(chr);
-                if (abbr.length() > Constants.COLLECTIONS_ABBR_LIMIT)
+                if (abbr.length() == Constants.COLLECTIONS_ABBR_LIMIT)
                     break;
             }
         }
