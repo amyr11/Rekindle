@@ -75,4 +75,91 @@
         app:layout_constraintVertical_bias="0.0"
         android:layout_marginStart="5dp"/>
 
+    <View
+        android:id="@+id/lineDivider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginHorizontal="26dp"
+        android:background="@color/purple_dark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/threadName"
+        app:layout_constraintVertical_bias="0.00"
+        android:layout_marginTop="6dp"/>
+
+    <TextView
+        android:id="@+id/devNote"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="26dp"
+        android:fontFamily="@font/roboto_regular"
+        android:text="When this thread is closed, there will be a mock quiz
+for every member of this thread.\n\n*Only members who have competitive mode turned on
+are able to join the mock quiz."
+        android:textColor="@color/purple_light"
+        android:textSize="12sp"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lineDivider"
+        app:layout_constraintVertical_bias="0"
+        android:layout_marginTop="22dp"/>
+
+    <TextView
+        android:id="@+id/orNote"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="26dp"
+        android:fontFamily="@font/roboto_regular"
+        android:text="or"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/devNote"
+        app:layout_constraintVertical_bias="0"
+        android:layout_marginTop="34dp"/>
+
+    <TextView
+        android:id="@+id/jatNote"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="4dp"
+        android:layout_marginTop="34dp"
+        android:fontFamily="@font/roboto_medium"
+        android:text="Join a Thread"
+        android:textColor="@color/purple_light"
+        android:textSize="18sp"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toEndOf="@+id/orNote"
+        app:layout_constraintTop_toBottomOf="@+id/devNote"
+        app:layout_constraintVertical_bias="0" />
+
+    <TextView
+        android:id="@+id/iNote"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="34dp"
+        android:fontFamily="@font/roboto_regular"
+        android:text="instead."
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toEndOf="@+id/jatNote"
+        app:layout_constraintTop_toBottomOf="@+id/devNote"
+        app:layout_constraintVertical_bias="0.0" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
