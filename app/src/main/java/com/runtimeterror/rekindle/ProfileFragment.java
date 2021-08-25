@@ -80,7 +80,7 @@ public class ProfileFragment extends Fragment {
     private FirebaseAuth mAuth;
     private FirebaseUser user;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private View layoutContainer, progressBar;
+    private View progressBar;
     private ImageView profilePhoto, silverMedal, goldMedal, bronzeMedal;
     private TextView usernameText, threadCntText, pointsText,
             silverCntText, goldCntText, bronzeCntText;
@@ -96,7 +96,6 @@ public class ProfileFragment extends Fragment {
                 startActivity(intent);
             }
         });
-        layoutContainer = view.findViewById(R.id.profile_container);
         progressBar = view.findViewById(R.id.progress_bar);
         profilePhoto = view.findViewById(R.id.profile_pic);
         usernameText = view.findViewById(R.id.username);
