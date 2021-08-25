@@ -1,22 +1,52 @@
 package com.runtimeterror.rekindle;
 
-public class User {
+public class UserInfo {
     private String userID;
     private String username;
     private String photoURL;
     private int threadCount;
     private int points;
     private boolean competitive;
+    private int goldCnt;
+    private int silverCnt;
+    private int bronzeCnt;
 
-    public User() {}
+    public UserInfo() {}
 
-    public User(String userID, String username, String photoURL, int threadCount, int points, boolean competitive) {
+    public UserInfo(String userID, String username, String photoURL) {
         this.userID = userID;
         this.username = username;
         this.photoURL = photoURL;
-        this.threadCount = threadCount;
-        this.points = points;
-        this.competitive = competitive;
+        this.threadCount = 0;
+        this.points = 0;
+        this.competitive = false;
+        this.goldCnt = 0;
+        this.silverCnt = 0;
+        this.bronzeCnt = 0;
+    }
+
+    public int getGoldCnt() {
+        return goldCnt;
+    }
+
+    public void setGoldCnt(int goldCnt) {
+        this.goldCnt = goldCnt;
+    }
+
+    public int getSilverCnt() {
+        return silverCnt;
+    }
+
+    public void setSilverCnt(int silverCnt) {
+        this.silverCnt = silverCnt;
+    }
+
+    public int getBronzeCnt() {
+        return bronzeCnt;
+    }
+
+    public void setBronzeCnt(int bronzeCnt) {
+        this.bronzeCnt = bronzeCnt;
     }
 
     public String getUserID() {

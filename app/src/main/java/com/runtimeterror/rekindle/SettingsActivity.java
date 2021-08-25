@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -78,9 +77,9 @@ public class SettingsActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                         if (task.isSuccessful()) {
-                            User user = task.getResult().toObject(User.class);
-                            assert user != null;
-                            competitiveSwitch.setChecked(user.isCompetitive());
+                            UserInfo userInfo = task.getResult().toObject(UserInfo.class);
+                            assert userInfo != null;
+                            competitiveSwitch.setChecked(userInfo.isCompetitive());
                         } else {
                             Log.w(Constants.TAG, "User retrieval failed.", task.getException());
                         }

@@ -117,13 +117,10 @@ public class SignInActivity extends AppCompatActivity {
 
     private void saveUserInformationToDB(FirebaseUser user) {
         //save user information to DB
-        User current = new User(
+        UserInfo current = new UserInfo(
                 user.getUid(),
                 user.getDisplayName(),
-                user.getPhotoUrl().toString(),
-                0,
-                0,
-                false
+                user.getPhotoUrl().toString()
         );
         //check if the user exists
         db.collection(Constants.COL_USERS)
