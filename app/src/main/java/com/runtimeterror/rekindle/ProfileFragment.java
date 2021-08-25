@@ -1,6 +1,7 @@
 package com.runtimeterror.rekindle;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -16,6 +17,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -82,8 +84,18 @@ public class ProfileFragment extends Fragment {
     private ImageView profilePhoto, silverMedal, goldMedal, bronzeMedal;
     private TextView usernameText, threadCntText, pointsText,
             silverCntText, goldCntText, bronzeCntText;
+    private ImageButton settingsButton;
 
     private void viewsInit(View view) {
+        settingsButton = view.findViewById(R.id.settings);
+        settingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //go to settings
+                Intent intent = new Intent(view.getContext(), SettingsActivity.class);
+                startActivity(intent);
+            }
+        });
         layoutContainer = view.findViewById(R.id.profile_container);
         progressBar = view.findViewById(R.id.progress_bar);
         profilePhoto = view.findViewById(R.id.profile_pic);
