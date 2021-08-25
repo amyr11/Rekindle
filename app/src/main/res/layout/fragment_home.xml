@@ -38,6 +38,7 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/flashcard_collections"
+                android:overScrollMode="never"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="26dp"
@@ -54,6 +55,6 @@
     </ScrollView>
 
     <include layout="@layout/progress_bar"
-        android:visibility="gone"/>
+        android:visibility="visible"/>
 
 </RelativeLayout>

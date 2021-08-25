@@ -6,12 +6,21 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,38 +77,82 @@ public class HomeFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_home, container, false);
     }
 
+    private FirebaseAuth mAuth;
+    private FirebaseUser user;
+    private FirebaseFirestore db;
     private RecyclerView collectionsRecyclerview;
     private CollectionsAdapter collectionsAdapter;
     private RecyclerView.LayoutManager layoutManager;
     private View progressBar;
+    private List<FlashcardCollection>flashcardCollections;
+    private static boolean allowRfresh;
 
-    private void viewsInit(View view) {
-        //TODO:
-        progressBar = view.findViewById(R.id.progress_bar);
-        loadCollections(view);
+    public static void allowRefresh() {
+        allowRfresh = true;
     }
 
-    private void recyclerViewInit(View view) {
+    private void viewsInit(View view) {
+        progressBar = view.findViewById(R.id.progress_bar);
         collectionsRecyclerview = view.findViewById(R.id.flashcard_collections);
-        List<FlashcardCollection> flashcardCollections = new ArrayList<>();
-        collectionsAdapter = new CollectionsAdapter(flashcardCollections);
         layoutManager = new GridLayoutManager(
                 view.getContext(), 2, GridLayoutManager.VERTICAL, false);
+        loadCollections();
+    }
+
+    private void recyclerViewInit() {
+        collectionsAdapter = new CollectionsAdapter(flashcardCollections, user.getUid());
         collectionsRecyclerview.setAdapter(collectionsAdapter);
         collectionsRecyclerview.setLayoutManager(layoutManager);
         collectionsRecyclerview.setNestedScrollingEnabled(false);
     }
 
-    private void loadCollections(View view) {
+    private void loadCollections() {
         progressBar.setVisibility(View.VISIBLE);
-        //TODO: load from firebase
-        recyclerViewInit(view);
-        progressBar.setVisibility(View.GONE);
+        flashcardCollections = new ArrayList<>();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mAuth = FirebaseAuth.getInstance();
+                user = mAuth.getCurrentUser();
+                assert user != null;
+                db = FirebaseFirestore.getInstance();
+                db.collection(Constants.COL_USERS)
+                        .document(user.getUid())
+                        .collection(Constants.COL_FLASHCARDS)
+                        .get()
+                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                if (task.isSuccessful()) {
+                                    for (QueryDocumentSnapshot doc : task.getResult()) {
+                                        FlashcardCollection collection = doc.toObject(FlashcardCollection.class);
+                                        flashcardCollections.add(collection);
+                                    }
+                                    recyclerViewInit();
+                                    progressBar.setVisibility(View.GONE);
+                                    Log.d(Constants.TAG, "Flashcards collections loaded.");
+                                } else {
+                                    Log.w(Constants.TAG, "Flashcards collections retrieval failed.", task.getException());
+                                }
+                            }
+                        });
+            }
+        }, 0);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         viewsInit(view);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (allowRfresh) {
+            allowRfresh = false;
+            loadCollections();
+            getParentFragmentManager().beginTransaction().detach(this).attach(this).commit();
+        }
     }
 }

@@ -1,5 +1,7 @@
 package com.runtimeterror.rekindle;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,9 +18,11 @@ public class CollectionsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     private static final int COLLECTION = 1;
 
     private List<FlashcardCollection> flashcardCollectionList;
+    private final String currentUserID;
 
-    public CollectionsAdapter(List<FlashcardCollection> list) {
+    public CollectionsAdapter(List<FlashcardCollection> list, String currentUserID) {
         this.flashcardCollectionList = list;
+        this.currentUserID = currentUserID;
     }
 
     public static class CollectionViewHolder extends RecyclerView.ViewHolder {
@@ -74,6 +78,10 @@ public class CollectionsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             @Override
             public void onClick(View v) {
                 //TODO: open add collection activity
+                Context context = addCollectionViewHolder.container.getContext();
+                Intent intent = new Intent(context, CreateFlashcardCollection.class);
+                intent.putExtra("userUID", currentUserID);
+                context.startActivity(intent);
             }
         });
     }

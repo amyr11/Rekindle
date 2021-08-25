@@ -109,37 +109,40 @@ public class ProfileFragment extends Fragment {
         bronzeMedal = view.findViewById(R.id.thirdPlace);
 
         //get user info and set views accordingly
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                loadUser();
-            }
-        }, 0);
+        loadUser();
     }
 
     private void loadUser() {
         progressBar.setVisibility(View.VISIBLE);
-        mAuth = FirebaseAuth.getInstance();
-        user = mAuth.getCurrentUser();
-        db.collection(Constants.COL_USERS)
-                .document(user.getUid())
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                        if (task.isSuccessful()) {
-                            UserInfo userInfo = task.getResult().toObject(UserInfo.class);
-                            assert userInfo != null;
-                            new DownloadSpriteTask().execute(userInfo.getPhotoURL());
-                            usernameText.setText(userInfo.getUsername());
-                            threadCntText.setText(String.valueOf(userInfo.getThreadCount()));
-                            pointsText.setText(String.valueOf(userInfo.getPoints()));
-                            setAchievements(userInfo.getGoldCnt(), userInfo.getSilverCnt(),
-                                    userInfo.getBronzeCnt());
-                            progressBar.setVisibility(View.GONE);
-                        }
-                    }
-                });
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mAuth = FirebaseAuth.getInstance();
+                user = mAuth.getCurrentUser();
+                db.collection(Constants.COL_USERS)
+                        .document(user.getUid())
+                        .get()
+                        .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                if (task.isSuccessful()) {
+                                    UserInfo userInfo = task.getResult().toObject(UserInfo.class);
+                                    assert userInfo != null;
+                                    new DownloadSpriteTask().execute(userInfo.getPhotoURL());
+                                    usernameText.setText(userInfo.getUsername());
+                                    threadCntText.setText(String.valueOf(userInfo.getThreadCount()));
+                                    pointsText.setText(String.valueOf(userInfo.getPoints()));
+                                    setAchievements(userInfo.getGoldCnt(), userInfo.getSilverCnt(),
+                                            userInfo.getBronzeCnt());
+                                    progressBar.setVisibility(View.GONE);
+                                    Log.d(Constants.TAG, "User info loaded.");
+                                } else {
+                                    Log.w(Constants.TAG, "User info retrieval failed", task.getException());
+                                }
+                            }
+                        });
+            }
+        }, 0);
     }
 
     private void setAchievements(int gold, int silver, int bronze) {
