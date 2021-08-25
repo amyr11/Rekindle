@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Rekindle">
         <activity
+            android:name=".ThreadChat"
+            android:exported="true" />
+        <activity
             android:name=".CopyThreadCode"
             android:exported="true" />
         <activity
