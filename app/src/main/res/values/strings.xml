@@ -9,4 +9,18 @@
     <string name="sign_out">Sign out</string>
     <string name="my_profile">My Profile</string>
     <string name="achievements">Achievements</string>
+    <string name="biology">Biology</string>
+    <string name="what_is_the_powerhouse_of_the_cell">What is the powerhouse of the cell?</string>
+    <string name="mitochondria">Mitochondria</string>
+    <string name="wrong_answer">Wrong answer</string>
+    <string name="these_are_decoy_answers_which_will_only_be_used_for_this_thread_s_mock_quiz">These are decoy answers which will only be used for this thread’s mock quiz.</string>
+    <string name="question">Question</string>
+    <string name="answer">Answer</string>
+    <string name="decoy_answer_1">Decoy Answer 1</string>
+    <string name="decoy_answer_2">Decoy Answer 2</string>
+    <string name="collection_name">Collection name</string>
+    <string name="create_new_nflashcard_collection">Create new\nFlashcard Collection</string>
+    <string name="create_a_nflashcard">Create a\nFlashcard</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
 </resources>
