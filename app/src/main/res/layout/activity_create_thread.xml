@@ -23,4 +23,56 @@
         app:layout_constraintVertical_bias="0"
         android:layout_marginTop="27dp"
         android:layout_marginStart="26dp"/>
+
+    <TextView
+        android:id="@+id/tTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="51dp"
+        android:fontFamily="@font/roboto_regular"
+        android:text="Thread name"
+        android:textColor="@color/purple_light"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cntTitle"
+        app:layout_constraintVertical_bias="0" />
+
+    <TextView
+        android:id="@+id/threadSymbol"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="26dp"
+        android:fontFamily="@font/roboto_regular"
+        android:text="#"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tTitle"
+        app:layout_constraintVertical_bias="0"
+        android:layout_marginTop="7dp"/>
+
+    <TextView
+        android:id="@+id/threadName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:fontFamily="@font/roboto_regular"
+        android:hint="Biology"
+        android:textColorHint="@color/purple_dark"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toEndOf="@+id/threadSymbol"
+        app:layout_constraintTop_toBottomOf="@+id/tTitle"
+        app:layout_constraintVertical_bias="0.0"
+        android:layout_marginStart="5dp"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
