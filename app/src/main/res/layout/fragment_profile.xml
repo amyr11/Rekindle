@@ -287,6 +287,6 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <include layout="@layout/progress_bar"
-        android:visibility="visible"/>
+        android:visibility="gone"/>
 
 </FrameLayout>

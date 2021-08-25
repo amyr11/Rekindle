@@ -23,4 +23,5 @@
     <string name="create_a_nflashcard">Create a\nFlashcard</string>
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
+    <string name="my_nflashcards">My\nFlashcards</string>
 </resources>
