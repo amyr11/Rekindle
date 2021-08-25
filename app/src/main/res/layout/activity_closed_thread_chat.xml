@@ -4,6 +4,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/purple_bg"
     tools:context=".ClosedThreadChat">
+
+    <include
+        android:id="@+id/include2"
+        layout="@layout/header_with_back" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="26dp"
+        android:src="@drawable/ic_button_more"
+        app:layout_constraintBottom_toBottomOf="@+id/include2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1"
+        app:layout_constraintStart_toStartOf="@+id/include2"
+        app:layout_constraintTop_toTopOf="@+id/include2" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_flashcards_button"
+        app:layout_constraintBottom_toBottomOf="@+id/include2"
+        app:layout_constraintEnd_toStartOf="@+id/imageView3"
+        app:layout_constraintHorizontal_bias="1"
+        app:layout_constraintStart_toStartOf="@+id/include2"
+        app:layout_constraintTop_toTopOf="@+id/include2"
+        android:layout_marginEnd="25dp"/>
+
+    <View
+        android:id="@+id/lineDivider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginHorizontal="26dp"
+        android:background="@color/purple_light"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include2"
+        app:layout_constraintVertical_bias="0.00" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
