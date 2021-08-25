@@ -12,16 +12,27 @@
         layout="@layout/header_with_back" />
 
     <ImageView
+        android:id="@+id/imageView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="26dp"
         android:src="@drawable/ic_button_more"
         app:layout_constraintBottom_toBottomOf="@+id/include2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1"
+        app:layout_constraintStart_toStartOf="@+id/include2"
+        app:layout_constraintTop_toTopOf="@+id/include2" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_flashcards_button"
+        app:layout_constraintBottom_toBottomOf="@+id/include2"
+        app:layout_constraintEnd_toStartOf="@+id/imageView3"
+        app:layout_constraintHorizontal_bias="1"
         app:layout_constraintStart_toStartOf="@+id/include2"
         app:layout_constraintTop_toTopOf="@+id/include2"
-        app:layout_constraintHorizontal_bias="1"
-        android:layout_marginEnd="26dp"/>
-
+        android:layout_marginEnd="25dp"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
