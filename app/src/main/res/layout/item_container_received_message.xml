@@ -6,5 +6,41 @@
     android:layout_height="wrap_content"
     android:padding="4dp">
 
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/imageProfile"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:background="@drawable/ic_view_profile_picture_bg"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="@id/textMessage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:riv_oval="true"/>
+    
+    <TextView
+        android:id="@+id/textMessage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:background="@drawable/receive_message_background"
+        android:padding="12dp"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@id/imageProfile"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.75"/>
+    
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:padding="12dp"
+        android:textColor="@color/purple_dark"
+        android:textSize="13sp"
+        android:fontFamily="@font/roboto_regular"
+        app:layout_constraintTop_toBottomOf="@id/textMessage"
+        app:layout_constraintStart_toStartOf="@id/textMessage"
+        />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
