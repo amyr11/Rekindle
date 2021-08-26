@@ -23,9 +23,6 @@
             android:name=".MembersPanel"
             android:exported="true" />
         <activity
-            android:name=".ThreadChat"
-            android:exported="true" />
-        <activity
             android:name=".CopyThreadCode"
             android:exported="true" />
         <activity
