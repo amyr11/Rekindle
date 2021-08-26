@@ -11,5 +11,8 @@
         android:color="@color/purple_light"
         android:width="@dimen/_2sdp"
         />
+    <size
+        android:height="@dimen/_32sdp"
+        />
 
 </shape>
