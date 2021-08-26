@@ -6,12 +6,12 @@
         />
     <stroke
         android:color="@color/purple_dark"
-        android:width="2dp"
+        android:width="@dimen/_2sdp"
         />
     <corners
-        android:bottomLeftRadius="24dp"
-        android:topLeftRadius="24dp"
-        android:topRightRadius="24dp"
+        android:bottomLeftRadius="@dimen/_24sdp"
+        android:topLeftRadius="@dimen/_24sdp"
+        android:topRightRadius="@dimen/_24sdp"
         />
 
 </shape>
