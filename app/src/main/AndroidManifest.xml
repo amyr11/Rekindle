@@ -11,6 +11,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Rekindle">
         <activity
+            android:name=".MockQuizScore"
+            android:exported="true" />
+        <activity
+            android:name=".ClosedThreadChat"
+            android:exported="true" />
+        <activity
+            android:name=".MembersPanel"
+            android:exported="true" />
+        <activity
             android:name=".ThreadChat"
             android:exported="true" />
         <activity
