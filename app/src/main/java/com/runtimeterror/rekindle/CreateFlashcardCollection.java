@@ -16,39 +16,37 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class CreateFlashcardCollection extends AppCompatActivity {
-    private FirebaseFirestore db;
-    private EditText colNameEditText;
-    private TextView saveButton, cancelButton;
-    private String userUID;
+    protected FirebaseFirestore db;
+    protected EditText colNameEditText;
+    protected TextView saveButton, cancelButton;
+    protected String userUID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_flashcard_collection);
-
         db = FirebaseFirestore.getInstance();
         userUID = getIntent().getStringExtra("userUID");
+        viewsInit();
+
+    }
+
+    protected void viewsInit() {
         colNameEditText = findViewById(R.id.collectionName);
         saveButton = findViewById(R.id.button_save);
+        cancelButton = findViewById(R.id.button_cancel);
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String titleFull = colNameEditText.getText().toString();
                 if (!titleFull.isEmpty()) {
-                    FlashcardCollection collection = new FlashcardCollection(
-                            titleFull,
-                            FlashcardCollection.generateAbbr(titleFull),
-                            FlashcardCollection.selectRandTheme()
-                    );
-                    addCollection(collection);
-                    HomeFragment.allowRefresh();
+                    onSave(titleFull);
                     finish();
                 } else {
                     Toast.makeText(getApplicationContext(), "All fields must be filled.", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-        cancelButton = findViewById(R.id.button_cancel);
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,11 +64,22 @@ public class CreateFlashcardCollection extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<DocumentReference> task) {
                         if (task.isSuccessful()) {
-                            Log.d(Constants.TAG, "Collection successfully added.");
+                            Log.d(Constants.TAG, "Collection successfully added/modified.");
                         } else {
-                            Log.d(Constants.TAG, "Collection cannot be added");
+                            Log.d(Constants.TAG, "Collection cannot be added/modified");
                         }
                     }
                 });
+    }
+
+    //Override
+    protected void onSave(String titleFull) {
+        FlashcardCollection collection = new FlashcardCollection(
+                titleFull,
+                FlashcardCollection.generateAbbr(titleFull),
+                FlashcardCollection.selectRandTheme()
+        );
+        addCollection(collection);
+        HomeFragment.allowRefresh();
     }
 }

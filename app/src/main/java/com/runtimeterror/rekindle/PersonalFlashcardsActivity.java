@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -30,16 +31,16 @@ import java.util.List;
 
 public class PersonalFlashcardsActivity extends AppCompatActivity {
     private FirebaseFirestore db;
-    private DocumentReference docRef;
     private ImageButton backButton;
     private TextView collectionTitle, reviewButton;
-    private ImageView editButton, removeButton;
+    private ImageButton editButton, removeButton;
     private View progressBar;
     private View addFlashCardButton;
     private RecyclerView flashcardsRecyclerView;
     private FlashcardsAdapter flashcardsAdapter;
     private RecyclerView.LayoutManager layoutManager;
     private String collectionID;
+    private FlashcardCollection flashcardCollection;
     private String userID;
     private List<Flashcard> flashcardList;
     private boolean colInfoLoaded = false, listLoaded = false;
@@ -85,6 +86,23 @@ public class PersonalFlashcardsActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        editButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Context context = editButton.getContext();
+                Intent intent = new Intent(context, EditFlashcardCollection.class);
+                intent.putExtra("collectionID", collectionID);
+                intent.putExtra("collectionName", flashcardCollection.getTitleFull());
+                intent.putExtra("userUID", userID);
+                context.startActivity(intent);
+            }
+        });
+        removeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //TODO
+            }
+        });
 
         progressBar.setVisibility(View.VISIBLE);
         new Handler().postDelayed(new Runnable() {
@@ -114,6 +132,7 @@ public class PersonalFlashcardsActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             FlashcardCollection collection = task.getResult()
                                     .toObject(FlashcardCollection.class);
+                            flashcardCollection = collection;
                             collectionTitle.setText(collection.getTitleFull());
                             colInfoLoaded = true;
                             progressBar.setVisibility(listLoaded ? View.GONE : View.VISIBLE);

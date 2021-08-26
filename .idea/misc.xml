@@ -26,11 +26,12 @@
         <entry key="app/src/main/res/layout-v23/activity_settings.xml" value="0.22916666666666666" />
         <entry key="app/src/main/res/layout-v23/activity_start.xml" value="0.22916666666666666" />
         <entry key="app/src/main/res/layout-v23/item_collection_flashcard.xml" value="0.22916666666666666" />
-        <entry key="app/src/main/res/layout/activity_all_flashcards.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_all_flashcards.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_create_flashcard.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_create_flashcard_collection.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_create_flashcard_personal.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_create_flashcard_thread.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_edit_flashcard_collection.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_settings.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.33" />
@@ -50,7 +51,7 @@
         <entry key="app/src/main/res/layout/line.xml" value="0.2037037037037037" />
         <entry key="app/src/main/res/layout/line_on_card.xml" value="0.2037037037037037" />
         <entry key="app/src/main/res/layout/progress_bar.xml" value="0.2037037037037037" />
-        <entry key="app/src/main/res/layout/save_cancel.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/save_cancel.xml" value="0.25" />
         <entry key="app/src/main/res/layout/text_with_switch.xml" value="0.25" />
       </map>
     </option>

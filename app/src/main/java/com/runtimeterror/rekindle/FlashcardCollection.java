@@ -12,6 +12,8 @@ import java.util.List;
 import java.util.Random;
 
 public class FlashcardCollection {
+    public static String FCOLLECTION_FULL_TITLE = "titleFull";
+
     @Exclude
     private String id;
 
