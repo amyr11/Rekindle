@@ -24,8 +24,10 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.ServerTimestamp;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,7 +47,6 @@ public class PersonalFlashcardsActivity extends AppCompatActivity {
     private String userID;
     private List<Flashcard> flashcardList;
     private boolean colInfoLoaded = false, listLoaded = false;
-    private boolean docDeleteSuccess = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -132,8 +133,6 @@ public class PersonalFlashcardsActivity extends AppCompatActivity {
                 .collection(Constants.COL_FLASHCARD_LIST);
 
         //remove all flashcards
-        int counter = 1;
-        int size = flashcardList.size();
         for (Flashcard flashcard : flashcardList) {
             flashcardsRef.document(flashcard.getId())
                     .delete()
@@ -141,21 +140,13 @@ public class PersonalFlashcardsActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()) {
-                                docDeleteSuccess = true;
+                                Log.w(Constants.TAG, "Document deleted.");
                             } else {
-                                Log.w(Constants.TAG, "Deletion failed.");
-                                docDeleteSuccess = false;
+                                Log.w(Constants.TAG, "Deletion failed.", task.getException());
                             }
                         }
                     });
-            if (docDeleteSuccess) {
-                Log.d(Constants.TAG, counter + " out of " + size + " deleted.");
-                counter++;
-            } else {
-                break;
-            }
         }
-        docDeleteSuccess = false;
 
         //remove collection
         collectionReference.document(collectionID)
@@ -203,6 +194,7 @@ public class PersonalFlashcardsActivity extends AppCompatActivity {
                 .collection(Constants.COL_FLASHCARD_COLLECTIONS)
                 .document(collectionID)
                 .collection(Constants.COL_FLASHCARD_LIST)
+                .orderBy("date", Query.Direction.DESCENDING)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override

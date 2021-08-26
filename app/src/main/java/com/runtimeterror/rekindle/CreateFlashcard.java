@@ -12,9 +12,14 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.ServerValue;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.ServerTimestamp;
+import com.google.protobuf.TimestampProto;
+
+import java.util.Date;
 
 public class CreateFlashcard extends AppCompatActivity {
     protected FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -43,7 +48,7 @@ public class CreateFlashcard extends AppCompatActivity {
                 String question = questionEditText.getText().toString();
                 String answer = answerEditText.getText().toString();
                 if (!question.isEmpty() && !answer.isEmpty()) {
-                    Flashcard flashcard = new Flashcard(question, answer);
+                    Flashcard flashcard = new Flashcard(question, answer, new Date());
                     addToCollection(flashcard);
                     finish();
                 } else {

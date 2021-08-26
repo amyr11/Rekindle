@@ -1,8 +1,13 @@
 package com.runtimeterror.rekindle;
 
 import com.google.firebase.firestore.Exclude;
+import com.google.firebase.firestore.ServerTimestamp;
+
+import java.util.Date;
 
 public class Flashcard {
+    @ServerTimestamp
+    private Date date;
     @Exclude
     private String id;
     private String question;
@@ -10,9 +15,10 @@ public class Flashcard {
 
     public Flashcard() {}
 
-    public Flashcard(String question, String answer) {
+    public Flashcard(String question, String answer, Date date) {
         this.question = question;
         this.answer = answer;
+        this.date = date;
     }
 
     public String getQuestion() {
@@ -37,5 +43,13 @@ public class Flashcard {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }

@@ -15,6 +15,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.Date;
+
 public class CreateFlashcardCollection extends AppCompatActivity {
     protected FirebaseFirestore db;
     protected EditText colNameEditText;
@@ -75,6 +77,7 @@ public class CreateFlashcardCollection extends AppCompatActivity {
     //Override
     protected void onSave(String titleFull) {
         FlashcardCollection collection = new FlashcardCollection(
+                new Date(),
                 titleFull,
                 FlashcardCollection.generateAbbr(titleFull),
                 FlashcardCollection.selectRandTheme()

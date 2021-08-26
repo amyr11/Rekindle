@@ -1,13 +1,10 @@
 package com.runtimeterror.rekindle;
 
-import android.os.Build;
-
-import androidx.annotation.RequiresApi;
-
 import com.google.firebase.firestore.Exclude;
+import com.google.firebase.firestore.ServerTimestamp;
 
-import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
@@ -15,8 +12,22 @@ public class FlashcardCollection {
     public static String FCOLLECTION_FULL_TITLE = "titleFull";
     public static String FCOLLECTION_ABBR_TITLE = "titleAbbr";
 
+    @ServerTimestamp
+    private Date date;
     @Exclude
     private String id;
+    private String titleFull;
+    private String titleAbbr;
+    private int theme;
+
+    public FlashcardCollection() {}
+
+    public FlashcardCollection(Date date, String titleFull, String titleAbbr, int theme) {
+        this.date = date;
+        this.titleFull = titleFull;
+        this.titleAbbr = titleAbbr;
+        this.theme = theme;
+    }
 
     public String getId() {
         return id;
@@ -24,18 +35,6 @@ public class FlashcardCollection {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    private String titleFull;
-    private String titleAbbr;
-    private int theme;
-
-    public FlashcardCollection() {}
-
-    public FlashcardCollection(String titleFull, String titleAbbr, int theme) {
-        this.titleFull = titleFull;
-        this.titleAbbr = titleAbbr;
-        this.theme = theme;
     }
 
     public static String generateAbbr(String full) {
@@ -80,5 +79,13 @@ public class FlashcardCollection {
 
     public void setTheme(int theme) {
         this.theme = theme;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }
