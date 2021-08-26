@@ -9,13 +9,15 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@color/purple_bg"
-        android:gravity="center">
+        android:gravity="center"
+        android:paddingBottom="@dimen/_18sdp">
         <ImageView
+            android:id="@+id/circleImage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/circle_with_purple_stroke" />
         <TextView
+            android:id="@+id/answerChoice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_regular"
