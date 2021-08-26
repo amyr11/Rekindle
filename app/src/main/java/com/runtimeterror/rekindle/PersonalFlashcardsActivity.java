@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -44,6 +45,7 @@ public class PersonalFlashcardsActivity extends AppCompatActivity {
     private String userID;
     private List<Flashcard> flashcardList;
     private boolean colInfoLoaded = false, listLoaded = false;
+    private boolean docDeleteSuccess = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,7 +102,9 @@ public class PersonalFlashcardsActivity extends AppCompatActivity {
         removeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO
+                removeCollection();
+                HomeFragment.allowRefresh();
+                finish();
             }
         });
 
@@ -121,8 +125,51 @@ public class PersonalFlashcardsActivity extends AppCompatActivity {
     }
 
     private void removeCollection() {
-        //TODO
+        CollectionReference collectionReference = db.collection(Constants.COL_USERS)
+                .document(userID)
+                .collection(Constants.COL_FLASHCARD_COLLECTIONS);
+        CollectionReference flashcardsRef = collectionReference.document(collectionID)
+                .collection(Constants.COL_FLASHCARD_LIST);
 
+        //remove all flashcards
+        int counter = 1;
+        int size = flashcardList.size();
+        for (Flashcard flashcard : flashcardList) {
+            flashcardsRef.document(flashcard.getId())
+                    .delete()
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                docDeleteSuccess = true;
+                            } else {
+                                Log.w(Constants.TAG, "Deletion failed.");
+                                docDeleteSuccess = false;
+                            }
+                        }
+                    });
+            if (docDeleteSuccess) {
+                Log.d(Constants.TAG, counter + " out of " + size + " deleted.");
+                counter++;
+            } else {
+                break;
+            }
+        }
+        docDeleteSuccess = false;
+
+        //remove collection
+        collectionReference.document(collectionID)
+                .delete()
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Log.d(Constants.TAG, "Collection successfully deleted.");
+                        } else {
+                            Log.w(Constants.TAG, "Parent collection deletion failed.", task.getException());
+                        }
+                    }
+                });
     }
 
     private void loadCollectionInfo() {
