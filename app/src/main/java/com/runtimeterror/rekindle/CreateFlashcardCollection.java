@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -33,14 +34,18 @@ public class CreateFlashcardCollection extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String titleFull = colNameEditText.getText().toString();
-                FlashcardCollection collection = new FlashcardCollection(
-                        titleFull,
-                        FlashcardCollection.generateAbbr(titleFull),
-                        FlashcardCollection.selectRandTheme()
-                );
-                addCollection(collection);
-                HomeFragment.allowRefresh();
-                finish();
+                if (!titleFull.isEmpty()) {
+                    FlashcardCollection collection = new FlashcardCollection(
+                            titleFull,
+                            FlashcardCollection.generateAbbr(titleFull),
+                            FlashcardCollection.selectRandTheme()
+                    );
+                    addCollection(collection);
+                    HomeFragment.allowRefresh();
+                    finish();
+                } else {
+                    Toast.makeText(getApplicationContext(), "All fields must be filled.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         cancelButton = findViewById(R.id.button_cancel);

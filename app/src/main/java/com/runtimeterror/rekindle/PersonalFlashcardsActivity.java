@@ -79,8 +79,10 @@ public class PersonalFlashcardsActivity extends AppCompatActivity {
         addFlashCardButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO: add flashcard
-
+                Intent intent = new Intent(getApplicationContext(), CreateFlashcard.class);
+                intent.putExtra("collectionID", collectionID);
+                intent.putExtra("userID", userID);
+                startActivity(intent);
             }
         });
 
