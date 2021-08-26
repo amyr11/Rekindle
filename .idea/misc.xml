@@ -26,7 +26,7 @@
         <entry key="app/src/main/res/layout-v23/activity_settings.xml" value="0.22916666666666666" />
         <entry key="app/src/main/res/layout-v23/activity_start.xml" value="0.22916666666666666" />
         <entry key="app/src/main/res/layout-v23/item_collection_flashcard.xml" value="0.22916666666666666" />
-        <entry key="app/src/main/res/layout/activity_all_flashcards.xml" value="0.4352126607319486" />
+        <entry key="app/src/main/res/layout/activity_all_flashcards.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_create_flashcard.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_create_flashcard_collection.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_create_flashcard_personal.xml" value="0.33" />
