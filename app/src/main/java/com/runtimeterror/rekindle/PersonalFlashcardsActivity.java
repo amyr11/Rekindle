@@ -1,7 +1,6 @@
 package com.runtimeterror.rekindle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,21 +12,16 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.firestore.ServerTimestamp;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,6 +41,7 @@ public class PersonalFlashcardsActivity extends AppCompatActivity {
     private String userID;
     private List<Flashcard> flashcardList;
     private boolean colInfoLoaded = false, listLoaded = false;
+    private CollectionReference fCollectionsRef, flashcardsRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +51,11 @@ public class PersonalFlashcardsActivity extends AppCompatActivity {
         collectionID = getIntent().getStringExtra("collectionID");
         userID = getIntent().getStringExtra("userID");
         db = FirebaseFirestore.getInstance();
+        fCollectionsRef = db.collection(Constants.COL_USERS)
+                .document(userID)
+                .collection(Constants.COL_FLASHCARD_COLLECTIONS);
+        flashcardsRef = fCollectionsRef.document(collectionID)
+                .collection(Constants.COL_FLASHCARD_LIST);
         backButton = findViewById(R.id.button_back);
         progressBar = findViewById(R.id.progress_bar);
         collectionTitle = findViewById(R.id.collectionSet);
@@ -120,18 +120,12 @@ public class PersonalFlashcardsActivity extends AppCompatActivity {
     }
 
     private void recyclerViewInit() {
-        flashcardsAdapter = new FlashcardsAdapter(flashcardList);
+        flashcardsAdapter = new FlashcardsAdapter(flashcardList, collectionID, userID);
         flashcardsRecyclerView.setAdapter(flashcardsAdapter);
         flashcardsRecyclerView.setLayoutManager(layoutManager);
     }
 
     private void removeCollection() {
-        CollectionReference collectionReference = db.collection(Constants.COL_USERS)
-                .document(userID)
-                .collection(Constants.COL_FLASHCARD_COLLECTIONS);
-        CollectionReference flashcardsRef = collectionReference.document(collectionID)
-                .collection(Constants.COL_FLASHCARD_LIST);
-
         //remove all flashcards
         for (Flashcard flashcard : flashcardList) {
             flashcardsRef.document(flashcard.getId())
@@ -149,7 +143,7 @@ public class PersonalFlashcardsActivity extends AppCompatActivity {
         }
 
         //remove collection
-        collectionReference.document(collectionID)
+        fCollectionsRef.document(collectionID)
                 .delete()
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override

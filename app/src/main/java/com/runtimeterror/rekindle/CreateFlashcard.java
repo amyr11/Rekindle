@@ -25,31 +25,31 @@ public class CreateFlashcard extends AppCompatActivity {
     protected FirebaseFirestore db = FirebaseFirestore.getInstance();
     protected EditText questionEditText, answerEditText;
     protected TextView saveButton, cancelButton;
-    private String collectionID;
-    private String userID;
+    protected String collectionID;
+    protected String userID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_flashcard_personal);
+        collectionID = getIntent().getStringExtra("collectionID");
+        userID = getIntent().getStringExtra("userID");
+        viewsInit();
+    }
 
+    //Override for thread
+    protected void viewsInit() {
         questionEditText = findViewById(R.id.question);
         answerEditText = findViewById(R.id.answer);
         saveButton = findViewById(R.id.button_save);
         cancelButton = findViewById(R.id.button_cancel);
-        viewsInit();
-    }
-
-    //Override
-    private void viewsInit() {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String question = questionEditText.getText().toString();
                 String answer = answerEditText.getText().toString();
                 if (!question.isEmpty() && !answer.isEmpty()) {
-                    Flashcard flashcard = new Flashcard(question, answer, new Date());
-                    addToCollection(flashcard);
+                    onSave(question, answer);
                     finish();
                 } else {
                     Toast.makeText(getApplicationContext(), "All fields must be filled.", Toast.LENGTH_SHORT).show();
@@ -64,10 +64,13 @@ public class CreateFlashcard extends AppCompatActivity {
         });
     }
 
-    //Override
+    protected void onSave(String question, String answer) {
+        Flashcard flashcard = new Flashcard(question, answer, new Date());
+        addToCollection(flashcard);
+    }
+
+    //Override for thread
     private CollectionReference getSubCollection() {
-        collectionID = getIntent().getStringExtra("collectionID");
-        userID = getIntent().getStringExtra("userID");
         return db.collection(Constants.COL_USERS)
                 .document(userID)
                 .collection(Constants.COL_FLASHCARD_COLLECTIONS)

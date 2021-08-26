@@ -1,5 +1,7 @@
 package com.runtimeterror.rekindle;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,10 +15,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FlashcardsAdapter extends RecyclerView.Adapter<FlashcardsAdapter.FlashcardViewHolder> {
-    List<Flashcard> flashcardList = new ArrayList<>();
+    private List<Flashcard> flashcardList = new ArrayList<>();
+    private String collectionID;
+    private String userID;
 
-    public FlashcardsAdapter(List<Flashcard> flashcards) {
+    public FlashcardsAdapter(List<Flashcard> flashcards, String collectionID, String userID) {
         this.flashcardList = flashcards;
+        this.collectionID = collectionID;
+        this.userID = userID;
     }
 
     public static class FlashcardViewHolder extends RecyclerView.ViewHolder {
@@ -47,8 +53,14 @@ public class FlashcardsAdapter extends RecyclerView.Adapter<FlashcardsAdapter.Fl
         holder.editButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO: Open edit flashcard activity
-
+                Context context = holder.editButton.getContext();
+                Intent intent = new Intent(context, EditFlashcard.class);
+                intent.putExtra("userID", userID);
+                intent.putExtra("collectionID", collectionID);
+                intent.putExtra("flashcardID", current.getId());
+                intent.putExtra("question", current.getQuestion());
+                intent.putExtra("answer", current.getAnswer());
+                context.startActivity(intent);
             }
         });
         holder.removeButton.setOnClickListener(new View.OnClickListener() {

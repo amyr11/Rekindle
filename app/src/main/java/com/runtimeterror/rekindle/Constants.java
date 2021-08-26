@@ -1,5 +1,8 @@
 package com.runtimeterror.rekindle;
 
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 public class Constants {
     public static String TAG = "RekindleTag";
     public static String COL_USERS = "users";

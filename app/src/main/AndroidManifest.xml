@@ -11,34 +11,38 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Rekindle">
         <activity
+            android:name=".EditFlashcard"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity
             android:name=".EditFlashcardCollection"
-            android:windowSoftInputMode="adjustResize"
-            android:exported="true" />
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".MockQuizScore"
             android:exported="true" />
         <activity
             android:name=".ClosedThreadChat"
-            android:windowSoftInputMode="adjustResize"
-            android:exported="true" />
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".MembersPanel"
             android:exported="true" />
         <activity
             android:name=".ThreadChat"
-            android:windowSoftInputMode="adjustResize"
-            android:exported="true" />
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".CopyThreadCode"
             android:exported="true" />
         <activity
             android:name=".JoinExistingThread"
-            android:windowSoftInputMode="adjustResize"
-            android:exported="true" />
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".CreateThread"
-            android:windowSoftInputMode="adjustResize"
-            android:exported="true" />
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".PersonalFlashcardsActivity"
             android:exported="true" />
@@ -47,12 +51,12 @@
             android:exported="true" />
         <activity
             android:name=".CreateFlashcard"
-            android:windowSoftInputMode="adjustResize"
-            android:exported="true" />
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".CreateFlashcardCollection"
-            android:windowSoftInputMode="adjustResize"
-            android:exported="true" />
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".SettingsActivity"
             android:exported="true" />
