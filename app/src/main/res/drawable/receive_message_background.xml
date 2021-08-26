@@ -4,12 +4,14 @@
     <solid
         android:color="@color/purple_bg"
         />
-    <corners
-        android:radius="@dimen/_24sdp"
-        />
     <stroke
-        android:color="@color/purple_light"
+        android:color="@color/purple_dark"
         android:width="@dimen/_2sdp"
+        />
+    <corners
+        android:bottomRightRadius="@dimen/_24sdp"
+        android:topLeftRadius="@dimen/_24sdp"
+        android:topRightRadius="@dimen/_24sdp"
         />
 
 </shape>
