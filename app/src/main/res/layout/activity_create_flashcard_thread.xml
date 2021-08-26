@@ -12,18 +12,18 @@
         android:id="@+id/cfcTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Create a\nFlashcard"
-        android:textColor="@color/white"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="27dp"
         android:fontFamily="@font/roboto_medium"
+        android:text="@string/create_a_nflashcard"
+        android:textColor="@color/white"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0"
-        android:layout_marginTop="27dp"
-        android:layout_marginStart="26dp"/>
+        app:layout_constraintVertical_bias="0" />
 
     <TextView
         android:id="@+id/daTitle1"
@@ -32,45 +32,34 @@
         android:layout_marginStart="26dp"
         android:layout_marginTop="42dp"
         android:fontFamily="@font/roboto_regular"
-        android:text="Decoy Answer 1"
+        android:text="@string/decoy_answer_1"
         android:textColor="@color/purple_light"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lineDivider2"
+        app:layout_constraintTop_toBottomOf="@+id/answer"
         app:layout_constraintVertical_bias="0" />
 
-    <TextView
+    <EditText
         android:id="@+id/decoyAnswer1"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="26dp"
+        android:layout_marginHorizontal="26dp"
+        android:layout_marginTop="7dp"
+        android:backgroundTint="@color/purple_light"
         android:fontFamily="@font/roboto_regular"
-        android:text="Input 1st decoy answer."
-        android:textColor="@color/purple_dark"
+        android:hint="@string/wrong_answer"
+        android:textColor="@color/white"
+        android:textColorHint="@color/purple_dark"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/daTitle1"
-        app:layout_constraintVertical_bias="0"
-        android:layout_marginTop="7dp"/>
-
-    <View
-        android:id="@+id/lineDivider3"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginHorizontal="26dp"
-        android:layout_marginTop="6dp"
-        android:background="@color/purple_dark"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/decoyAnswer1"
-        app:layout_constraintVertical_bias="0.00" />
+        app:layout_constraintVertical_bias="0" />
 
     <TextView
         android:id="@+id/daTitle2"
@@ -79,45 +68,34 @@
         android:layout_marginStart="26dp"
         android:layout_marginTop="15dp"
         android:fontFamily="@font/roboto_regular"
-        android:text="Decoy Answer 2"
+        android:text="@string/decoy_answer_2"
         android:textColor="@color/purple_light"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lineDivider3"
+        app:layout_constraintTop_toBottomOf="@+id/decoyAnswer1"
         app:layout_constraintVertical_bias="0" />
 
-    <TextView
+    <EditText
         android:id="@+id/decoyAnswer2"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="26dp"
+        android:layout_marginHorizontal="26dp"
+        android:layout_marginTop="7dp"
+        android:backgroundTint="@color/purple_light"
         android:fontFamily="@font/roboto_regular"
-        android:text="Input 2nd decoy answer."
-        android:textColor="@color/purple_dark"
+        android:hint="@string/wrong_answer"
+        android:textColor="@color/white"
+        android:textColorHint="@color/purple_dark"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/daTitle2"
-        app:layout_constraintVertical_bias="0"
-        android:layout_marginTop="7dp"/>
-
-    <View
-        android:id="@+id/lineDivider4"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginHorizontal="26dp"
-        android:layout_marginTop="6dp"
-        android:background="@color/purple_dark"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/decoyAnswer2"
-        app:layout_constraintVertical_bias="0.00" />
+        app:layout_constraintVertical_bias="0" />
 
     <TextView
         android:id="@+id/qTitle"
@@ -126,7 +104,7 @@
         android:layout_marginStart="26dp"
         android:layout_marginTop="51dp"
         android:fontFamily="@font/roboto_regular"
-        android:text="Question"
+        android:text="@string/question"
         android:textColor="@color/purple_light"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -136,35 +114,24 @@
         app:layout_constraintTop_toBottomOf="@+id/cfcTitle"
         app:layout_constraintVertical_bias="0" />
 
-    <TextView
+    <EditText
         android:id="@+id/question"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="26dp"
+        android:layout_marginHorizontal="26dp"
+        android:layout_marginTop="7dp"
+        android:backgroundTint="@color/purple_light"
         android:fontFamily="@font/roboto_regular"
-        android:text="Define mitochondria"
-        android:textColor="@color/purple_dark"
+        android:hint="@string/what_is_the_powerhouse_of_the_cell"
+        android:textColor="@color/white"
+        android:textColorHint="@color/purple_dark"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/qTitle"
-        app:layout_constraintVertical_bias="0"
-        android:layout_marginTop="7dp"/>
-
-    <View
-        android:id="@+id/lineDivider"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginHorizontal="26dp"
-        android:layout_marginTop="6dp"
-        android:background="@color/purple_dark"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/question"
-        app:layout_constraintVertical_bias="0.00" />
+        app:layout_constraintVertical_bias="0" />
 
     <TextView
         android:id="@+id/aTitle"
@@ -173,96 +140,51 @@
         android:layout_marginStart="26dp"
         android:layout_marginTop="15dp"
         android:fontFamily="@font/roboto_regular"
-        android:text="Answer"
+        android:text="@string/answer"
         android:textColor="@color/purple_light"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lineDivider"
+        app:layout_constraintTop_toBottomOf="@+id/question"
         app:layout_constraintVertical_bias="0" />
 
-    <TextView
+    <EditText
         android:id="@+id/answer"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="26dp"
+        android:layout_marginHorizontal="26dp"
+        android:layout_marginTop="7dp"
+        android:backgroundTint="@color/purple_light"
         android:fontFamily="@font/roboto_regular"
-        android:text="The power house of the cell."
-        android:textColor="@color/purple_dark"
+        android:hint="@string/mitochondria"
+        android:textColor="@color/white"
+        android:textColorHint="@color/purple_dark"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/aTitle"
-        app:layout_constraintVertical_bias="0"
-        android:layout_marginTop="7dp"/>
-
-    <View
-        android:id="@+id/lineDivider2"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginHorizontal="26dp"
-        android:layout_marginTop="6dp"
-        android:background="@color/purple_dark"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/answer"
-        app:layout_constraintVertical_bias="0.00" />
+        app:layout_constraintVertical_bias="0" />
 
     <TextView
         android:id="@+id/daDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="26dp"
+        android:layout_marginHorizontal="26dp"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/roboto_regular"
-        android:text="These are decoy answers which will only be used for\n
-this thread’s mock quiz."
+        android:text="@string/these_are_decoy_answers_which_will_only_be_used_for_this_thread_s_mock_quiz"
         android:textColor="@color/purple_light"
         android:textSize="12sp"
+        app:layout_constrainedWidth="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lineDivider4"
-        app:layout_constraintVertical_bias="0" />
-
-    <TextView
-        android:id="@+id/cancel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="51dp"
-        android:layout_marginBottom="25dp"
-        android:fontFamily="@font/roboto_medium"
-        android:text="Cancel"
-        android:textColor="@color/purple_light"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lineDivider"
-        app:layout_constraintVertical_bias="1" />
-
-    <TextView
-        android:id="@+id/save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="51dp"
-        android:layout_marginBottom="25dp"
-        android:fontFamily="@font/roboto_medium"
-        android:text="Save"
-        android:textColor="@color/purple_light"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lineDivider"
-        app:layout_constraintVertical_bias="1" />
+        app:layout_constraintTop_toBottomOf="@+id/decoyAnswer2"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
