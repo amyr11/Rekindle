@@ -37,4 +37,5 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="edit_nflashcard_collection">Edit\nFlashcard collection</string>
     <string name="edit_nflashcard">Edit\nFlashcard</string>
+    <string name="flip">Flip</string>
 </resources>
