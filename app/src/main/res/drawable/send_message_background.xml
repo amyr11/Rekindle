@@ -9,7 +9,9 @@
         android:width="2dp"
         />
     <corners
-        android:radius="360dp"
+        android:bottomLeftRadius="24dp"
+        android:topLeftRadius="24dp"
+        android:topRightRadius="24dp"
         />
 
 </shape>
