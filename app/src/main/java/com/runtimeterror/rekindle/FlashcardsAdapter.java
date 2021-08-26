@@ -2,6 +2,7 @@ package com.runtimeterror.rekindle;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,10 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,9 +71,32 @@ public class FlashcardsAdapter extends RecyclerView.Adapter<FlashcardsAdapter.Fl
         holder.removeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO: Remove flashcard
+                removeFlashcard(current, holder.getBindingAdapterPosition());
             }
         });
+    }
+
+    private void removeFlashcard(Flashcard flashcard, int position) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection(Constants.COL_USERS)
+                .document(userID)
+                .collection(Constants.COL_FLASHCARD_COLLECTIONS)
+                .document(collectionID)
+                .collection(Constants.COL_FLASHCARD_LIST)
+                .document(flashcard.getId())
+                .delete()
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Log.d(Constants.TAG, "Flashcard successfully deleted.");
+                        } else {
+                            Log.w(Constants.TAG, "Flashcard deletion failed.", task.getException());
+                        }
+                    }
+                });
+        flashcardList.remove(position);
+        notifyDataSetChanged();
     }
 
     @Override
