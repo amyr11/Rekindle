@@ -55,7 +55,12 @@ public class CollectionsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         collectionViewHolder.container.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO: open all flashcards activity
+                //open all flashcards activity
+                Context context = collectionViewHolder.container.getContext();
+                Intent intent = new Intent(context, PersonalFlashcardsActivity.class);
+                intent.putExtra("collectionID", current.getId());
+                intent.putExtra("userID", currentUserID);
+                context.startActivity(intent);
             }
         });
         collectionViewHolder.titleAbbrText.setTextColor(
@@ -77,7 +82,6 @@ public class CollectionsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         addCollectionViewHolder.container.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO: open add collection activity
                 Context context = addCollectionViewHolder.container.getContext();
                 Intent intent = new Intent(context, CreateFlashcardCollection.class);
                 intent.putExtra("userUID", currentUserID);

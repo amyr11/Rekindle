@@ -50,7 +50,7 @@ public class FlashcardsAdapter extends RecyclerView.Adapter<FlashcardsAdapter.Fl
                 //TODO: Open edit flashcard activity
             }
         });
-        holder.editButton.setOnClickListener(new View.OnClickListener() {
+        holder.removeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //TODO: Remove flashcard

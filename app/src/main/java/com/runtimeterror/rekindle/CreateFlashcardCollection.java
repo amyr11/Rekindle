@@ -3,7 +3,6 @@ package com.runtimeterror.rekindle;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -56,7 +55,7 @@ public class CreateFlashcardCollection extends AppCompatActivity {
     private void addCollection(FlashcardCollection collection) {
         db.collection(Constants.COL_USERS)
                 .document(userUID)
-                .collection(Constants.COL_FLASHCARDS)
+                .collection(Constants.COL_FLASHCARD_COLLECTIONS)
                 .add(collection)
                 .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                     @Override

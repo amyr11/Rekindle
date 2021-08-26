@@ -152,7 +152,6 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/flashcards_recyclerview"
                 android:overScrollMode="never"
-                tools:listitem="@layout/item_flashcard"
                 android:nestedScrollingEnabled="false"
                 android:layout_marginTop="15dp"
                 android:layout_width="match_parent"
@@ -161,5 +160,15 @@
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
+
+    <include
+        layout="@layout/progress_bar"
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

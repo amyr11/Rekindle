@@ -118,7 +118,7 @@ public class HomeFragment extends Fragment {
                 db = FirebaseFirestore.getInstance();
                 db.collection(Constants.COL_USERS)
                         .document(user.getUid())
-                        .collection(Constants.COL_FLASHCARDS)
+                        .collection(Constants.COL_FLASHCARD_COLLECTIONS)
                         .get()
                         .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                             @Override
@@ -126,6 +126,7 @@ public class HomeFragment extends Fragment {
                                 if (task.isSuccessful()) {
                                     for (QueryDocumentSnapshot doc : task.getResult()) {
                                         FlashcardCollection collection = doc.toObject(FlashcardCollection.class);
+                                        collection.setId(doc.getId());
                                         flashcardCollections.add(collection);
                                     }
                                     recyclerViewInit();

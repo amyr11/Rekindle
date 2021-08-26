@@ -3,7 +3,8 @@ package com.runtimeterror.rekindle;
 public class Constants {
     public static String TAG = "RekindleTag";
     public static String COL_USERS = "users";
-    public static String COL_FLASHCARDS = "flashcardCollections";
+    public static String COL_FLASHCARD_COLLECTIONS = "flashcardCollections";
+    public static String COL_FLASHCARD_LIST = "flashcards";
     public static int THEME_COUNT = 5;
     public static int ORANGE = 0;
     public static int PURPLE = 1;

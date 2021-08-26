@@ -1,6 +1,10 @@
 package com.runtimeterror.rekindle;
 
+import com.google.firebase.firestore.Exclude;
+
 public class Flashcard {
+    @Exclude
+    private String id;
     private String question;
     private String answer;
 
@@ -25,5 +29,13 @@ public class Flashcard {
 
     public void setAnswer(String answer) {
         this.answer = answer;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }
