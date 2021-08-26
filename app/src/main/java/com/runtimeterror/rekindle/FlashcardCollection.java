@@ -13,6 +13,7 @@ import java.util.Random;
 
 public class FlashcardCollection {
     public static String FCOLLECTION_FULL_TITLE = "titleFull";
+    public static String FCOLLECTION_ABBR_TITLE = "titleAbbr";
 
     @Exclude
     private String id;

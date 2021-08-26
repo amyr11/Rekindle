@@ -120,6 +120,11 @@ public class PersonalFlashcardsActivity extends AppCompatActivity {
         flashcardsRecyclerView.setLayoutManager(layoutManager);
     }
 
+    private void removeCollection() {
+        //TODO
+
+    }
+
     private void loadCollectionInfo() {
         db.collection(Constants.COL_USERS)
                 .document(userID)

@@ -39,6 +39,7 @@ public class EditFlashcardCollection extends CreateFlashcardCollection {
     private void updateCollection(String titleFull) {
         Map<String, Object> collection = new HashMap<>();
         collection.put(FlashcardCollection.FCOLLECTION_FULL_TITLE, titleFull);
+        collection.put(FlashcardCollection.FCOLLECTION_ABBR_TITLE, FlashcardCollection.generateAbbr(titleFull));
 
         collectionId = getIntent().getStringExtra("collectionID");
         db.collection(Constants.COL_USERS)
