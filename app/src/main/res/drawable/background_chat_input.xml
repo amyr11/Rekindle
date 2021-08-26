@@ -5,11 +5,11 @@
         android:color="@color/purple_bg"
         />
     <corners
-        android:radius="24dp"
+        android:radius="@dimen/_24sdp"
         />
     <stroke
         android:color="@color/purple_light"
-        android:width="2dp"
+        android:width="@dimen/_2sdp"
         />
 
 </shape>
