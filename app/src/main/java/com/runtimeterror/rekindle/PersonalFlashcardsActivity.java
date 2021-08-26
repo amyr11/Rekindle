@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -103,9 +105,19 @@ public class PersonalFlashcardsActivity extends AppCompatActivity {
         removeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                removeCollection();
-                HomeFragment.allowRefresh();
-                finish();
+                new AlertDialog.Builder(removeButton.getContext())
+                        .setTitle("Delete collection")
+                        .setMessage("Are you sure you want to delete this collection? All flashcards will be deleted.")
+                        .setPositiveButton("Cancel", null)
+                        .setNegativeButton("Delete", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                removeCollection();
+                                HomeFragment.allowRefresh();
+                                finish();
+                            }
+                        })
+                        .show();
             }
         });
 
@@ -120,7 +132,7 @@ public class PersonalFlashcardsActivity extends AppCompatActivity {
     }
 
     private void recyclerViewInit() {
-        flashcardsAdapter = new FlashcardsAdapter(flashcardList, collectionID, userID);
+        flashcardsAdapter = new FlashcardsAdapter(this, flashcardList, collectionID, userID);
         flashcardsRecyclerView.setAdapter(flashcardsAdapter);
         flashcardsRecyclerView.setLayoutManager(layoutManager);
     }

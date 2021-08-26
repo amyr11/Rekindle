@@ -1,6 +1,8 @@
 package com.runtimeterror.rekindle;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -23,8 +25,10 @@ public class FlashcardsAdapter extends RecyclerView.Adapter<FlashcardsAdapter.Fl
     private List<Flashcard> flashcardList = new ArrayList<>();
     private String collectionID;
     private String userID;
+    private Context context;
 
-    public FlashcardsAdapter(List<Flashcard> flashcards, String collectionID, String userID) {
+    public FlashcardsAdapter(Context context, List<Flashcard> flashcards, String collectionID, String userID) {
+        this.context = context;
         this.flashcardList = flashcards;
         this.collectionID = collectionID;
         this.userID = userID;
@@ -71,7 +75,17 @@ public class FlashcardsAdapter extends RecyclerView.Adapter<FlashcardsAdapter.Fl
         holder.removeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                removeFlashcard(current, holder.getBindingAdapterPosition());
+                new AlertDialog.Builder(context)
+                        .setTitle("Delete flashcard")
+                        .setMessage("Are you sure you want to delete this flashcard? This cannot be undone.")
+                        .setPositiveButton("Cancel", null)
+                        .setNegativeButton("Delete", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                removeFlashcard(current, holder.getBindingAdapterPosition());
+                            }
+                        })
+                        .show();
             }
         });
     }
