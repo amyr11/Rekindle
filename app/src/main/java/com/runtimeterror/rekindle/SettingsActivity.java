@@ -12,6 +12,9 @@ import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,6 +27,7 @@ import java.util.Map;
 
 public class SettingsActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
+    private GoogleSignInClient mGoogleSignInClient;
     private FirebaseUser user;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private SwitchCompat competitiveSwitch;
@@ -34,6 +38,12 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
         mAuth = FirebaseAuth.getInstance();
+        // Configure Google Sign In
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.client_id))
+                .requestEmail()
+                .build();
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
         user = mAuth.getCurrentUser();
         assert user != null;
 
@@ -52,6 +62,7 @@ public class SettingsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //sign out user and go back to sign in activity
                 mAuth.signOut();
+                mGoogleSignInClient.signOut();
                 Toast.makeText(getApplicationContext(), "Signed out.", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getApplicationContext(), SignInActivity.class);
                 startActivity(intent);

@@ -11,6 +11,8 @@ import androidx.annotation.ColorRes;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.core.content.ContextCompat;
 
+import org.w3c.dom.Text;
+
 public class ViewUtils {
     public static void setHeader(Activity activity, String title) {
         ImageButton backButton = activity.findViewById(R.id.button_back);
@@ -29,6 +31,12 @@ public class ViewUtils {
         TextView titleView = parent.findViewById(R.id.title);
         titleView.setText(title);
         return parent.findViewById(R.id.switch_view);
+    }
+
+    public static TextView getHeaderTextButton(Activity activity, String text) {
+        TextView textButton = activity.findViewById(R.id.text_button);
+        textButton.setText(text);
+        return textButton;
     }
 
     public static int getCardColor(Context context, int theme) {
