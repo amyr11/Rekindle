@@ -8,10 +8,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/purple_bg">
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_regular"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:hint="The powerhouse of the cell."
+            android:textColorHint="@color/purple_light"
+            android:textSize="@dimen/_16ssp"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
