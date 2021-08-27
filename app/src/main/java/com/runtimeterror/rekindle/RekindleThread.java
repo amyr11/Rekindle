@@ -71,6 +71,7 @@ public class RekindleThread {
         return members;
     }
 
+    @Exclude
     public int getMemberCount() {
         return members.size();
     }
