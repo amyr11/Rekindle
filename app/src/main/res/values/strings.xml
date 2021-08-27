@@ -45,4 +45,8 @@
     <string name="or">or</string>
     <string name="join_a_thread">Join a Thread</string>
     <string name="instead">instead.</string>
+    <string name="join">Join</string>
+    <string name="type_code">Type code</string>
+    <string name="copy">Copy</string>
+    <string name="dismiss">Dismiss</string>
 </resources>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,87 +8,68 @@
     android:background="@color/purple_bg"
     tools:context=".JoinExistingThread">
 
-    <TextView
-        android:id="@+id/jetTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Join an\nexisting Thread"
-        android:textColor="@color/white"
-        android:fontFamily="@font/roboto_medium"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0"
-        android:layout_marginTop="27dp"
-        android:layout_marginStart="26dp"/>
-
-    <TextView
-        android:id="@+id/enterThreadTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="26dp"
-        android:layout_marginTop="51dp"
-        android:fontFamily="@font/roboto_regular"
-        android:text="Enter thread's code"
-        android:textColor="@color/purple_light"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/jetTitle"
-        app:layout_constraintVertical_bias="0" />
-
-    <ImageView
-        android:id="@+id/codeSpace"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="57dp"
-        android:layout_marginHorizontal="26dp"
-        android:layout_marginTop="9dp"
-        android:background="@drawable/add_threadcode_space"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintVertical_bias="0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/enterThreadTxt"
-        />
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/cancel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="51dp"
-        android:layout_marginBottom="25dp"
-        android:fontFamily="@font/roboto_medium"
-        android:text="Cancel"
-        android:textColor="@color/purple_light"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/codeSpace"
-        app:layout_constraintVertical_bias="1" />
+        <TextView
+            android:id="@+id/jetTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="27dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="Join an\nexisting Thread"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
-    <TextView
-        android:id="@+id/save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="51dp"
-        android:layout_marginBottom="25dp"
-        android:fontFamily="@font/roboto_medium"
-        android:text="Join"
-        android:textColor="@color/purple_light"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/codeSpace"
-        app:layout_constraintVertical_bias="1" />
+        <TextView
+            android:id="@+id/enterThreadTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="51dp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="Enter thread's code"
+            android:textColor="@color/purple_light"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.449"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/jetTitle"
+            app:layout_constraintVertical_bias="0.0" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <EditText
+            android:id="@+id/thread_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="10dp"
+            android:background="@drawable/card_with_stroke_15cr"
+            android:gravity="center"
+            android:hint="@string/type_code"
+            android:layout_marginTop="9dp"
+            android:fontFamily="@font/roboto_regular"
+            android:textSize="20sp"
+            android:layout_marginHorizontal="26dp"
+            android:paddingVertical="17dp"
+            android:textColorHint="@color/purple_dark"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/enterThreadTxt"
+            app:layout_constraintVertical_bias="0.0" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <include layout="@layout/join_cancel"/>
+
+</RelativeLayout>

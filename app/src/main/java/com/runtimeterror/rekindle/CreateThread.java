@@ -3,6 +3,7 @@ package com.runtimeterror.rekindle;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,6 +15,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldValue;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -22,8 +24,8 @@ import java.util.Map;
 public class CreateThread extends AppCompatActivity {
     private EditText threadName;
     private TextView joinAThreadButton, saveButton, cancelButton;
-    private UserInfo user;
     private DBhelper db = new DBhelper();
+    private static boolean finishActivity = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +36,8 @@ public class CreateThread extends AppCompatActivity {
         joinAThreadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO: open join thread activity
+                Intent intent = new Intent(getApplicationContext(), JoinExistingThread.class);
+                startActivity(intent);
             }
         });
         saveButton = findViewById(R.id.button_save);
@@ -43,9 +46,9 @@ public class CreateThread extends AppCompatActivity {
             public void onClick(View v) {
                 String threadNameString = threadName.getText().toString();
                 if (!threadNameString.isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "Creating thread...", Toast.LENGTH_SHORT).show();
                     onSave(threadNameString);
                     ThreadsFragment.allowRefresh();
-                    finish();
                 } else {
                     Toast.makeText(getApplicationContext(), "All fields must be filled.", Toast.LENGTH_SHORT).show();
                 }
@@ -61,7 +64,6 @@ public class CreateThread extends AppCompatActivity {
     }
 
     private void onSave(String threadNameString) {
-        getUser();
         //upload thread to db
         RekindleThread rekindleThread = new RekindleThread(
                 new Date(),
@@ -75,11 +77,14 @@ public class CreateThread extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<DocumentReference> task) {
                         if (task.isSuccessful()) {
-                            //update user thread count
-                            Map<String, Object> changes = new HashMap<>();
-                            changes.put(Constants.FIELD_THREAD_COUNT, user.getThreadCount() + 1);
-                            db.getUserDocRef().update(changes);
-                            Log.d(Constants.TAG, "Thread successfully created");
+                            //increment user's thread count
+                            db.getUserDocRef()
+                                    .update(Constants.FIELD_THREAD_COUNT, FieldValue.increment(1));
+                            //open copy thread code activity
+                            Intent intent = new Intent(getApplicationContext(), CopyThreadCode.class);
+                            intent.putExtra("threadCode", task.getResult().getId());
+                            startActivity(intent);
+                            finish();
                         } else {
                             Log.w(Constants.TAG, "Thread creation failed", task.getException());
                         }
@@ -87,16 +92,16 @@ public class CreateThread extends AppCompatActivity {
                 });
     }
 
-    private void getUser() {
-        db.getUserDocRef()
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                        if (task.isSuccessful()) {
-                            user = task.getResult().toObject(UserInfo.class);
-                        }
-                    }
-                });
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (finishActivity) {
+            finishActivity = false;
+            finish();
+        }
+    }
+
+    public static void finishActivity() {
+        finishActivity = true;
     }
 }

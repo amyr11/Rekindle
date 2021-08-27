@@ -54,6 +54,7 @@
         <entry key="app/src/main/res/layout-v23/item_collection_flashcard.xml" value="0.22916666666666666" />
         <entry key="app/src/main/res/layout-v23/item_thread.xml" value="0.2037037037037037" />
         <entry key="app/src/main/res/layout/activity_all_flashcards.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_copy_thread_code.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_create_flashcard.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_create_flashcard_collection.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_create_flashcard_personal.xml" value="0.33" />
@@ -61,6 +62,7 @@
         <entry key="app/src/main/res/layout/activity_create_thread.xml" value="0.5" />
         <entry key="app/src/main/res/layout/activity_edit_flashcard.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_edit_flashcard_collection.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_join_existing_thread.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.11510416666666666" />
         <entry key="app/src/main/res/layout/activity_review_flashcards.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_settings.xml" value="0.33" />
@@ -80,6 +82,7 @@
         <entry key="app/src/main/res/layout/item_collection_flashcard.xml" value="0.33" />
         <entry key="app/src/main/res/layout/item_flashcard.xml" value="0.4601063829787234" />
         <entry key="app/src/main/res/layout/item_thread.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/join_cancel.xml" value="0.2037037037037037" />
         <entry key="app/src/main/res/layout/line.xml" value="0.2037037037037037" />
         <entry key="app/src/main/res/layout/line_on_card.xml" value="0.2037037037037037" />
         <entry key="app/src/main/res/layout/progress_bar.xml" value="0.2037037037037037" />
