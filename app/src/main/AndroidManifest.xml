@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.runtimeterror.rekindle">
-    
-    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -12,6 +10,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Rekindle">
+        <activity
+            android:name=".ThreadSettings"
+            android:exported="true" />
         <activity
             android:name=".ThreadGroupChat"
             android:exported="true"/>
@@ -78,9 +79,11 @@
             android:name=".firebase.MassagingService"
             android:exported="false">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
     </application>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>
