@@ -58,6 +58,24 @@ public class LeitnerManager {
         }
     }
 
+    public void reset() {
+        List<Flashcard> flashcards = getAllFlashcards();
+        box1.clear();
+        box2.clear();
+        box3.clear();
+        for (Flashcard flashcard : flashcards) {
+            flashcard.setShow(true);
+            flashcard.setBoxNumber(1);
+            box1.put(flashcard.getId(), flashcard);
+            updateFlashcard(colDocRef, flashcard);
+        }
+        flashcardCollection.setBox2State(0);
+        flashcardCollection.setBox3State(0);
+        updateCollection();
+        flashcardsToFocus.clear();
+        setFlashcardsToFocus();
+    }
+
     public void updateCardBoxNumber(Flashcard flashcard, boolean isAnswerCorrect) {
         //update the card box number based on it's previous box number
         //if the answer is correct, moved to next box

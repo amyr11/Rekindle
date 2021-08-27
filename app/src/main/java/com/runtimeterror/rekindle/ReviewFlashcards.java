@@ -34,7 +34,7 @@ public class ReviewFlashcards extends AppCompatActivity {
 
     private View progressBar;
     private TextView collectionTitle, cardContent, flipButton,
-            notMemorizedCount, memorizedCount, memorizedWellCount;
+            notMemorizedCount, memorizedCount, memorizedWellCount, resetButton;
     private CardView cardContainer;
     private ImageButton wrongButton, correctButton, backButton;
     private View answerChecker;
@@ -67,6 +67,16 @@ public class ReviewFlashcards extends AppCompatActivity {
     }
 
     protected void viewsInit() {
+        resetButton = ViewUtils.getHeaderTextButton(this, "Reset");
+        resetButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                leitnerManager.reset();
+                updateCardContent();
+                updateMemorizedCounters();
+            }
+        });
+
         backButton = findViewById(R.id.button_back);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
