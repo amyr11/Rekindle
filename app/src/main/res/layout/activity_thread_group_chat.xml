@@ -11,7 +11,8 @@
     <include
         android:id="@+id/include2"
         layout="@layout/header_with_back"
-        tools:layout_editor_absoluteY="367dp" />
+        tools:layout_editor_absoluteY="367dp"
+        app:layout_constraintBottom_toTopOf="@id/viewSupporter"/>
 
     <View
         android:id="@+id/bacgroundView"
@@ -20,6 +21,13 @@
         android:layout_marginBottom="@dimen/_16sdp"
         android:background="@drawable/top_background_content"
         app:layout_constraintBottom_toTopOf="@id/sendLayout"
+        app:layout_constraintTop_toBottomOf="@id/lineDivider"/>
+
+    <View
+        android:id="@+id/viewSupporter"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/_12sdp"
         app:layout_constraintTop_toBottomOf="@id/lineDivider"/>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -33,7 +41,7 @@
         android:visibility="gone"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="@id/bacgroundView"
-        app:layout_constraintTop_toBottomOf="@id/lineDivider"/>
+        app:layout_constraintTop_toBottomOf="@id/viewSupporter"/>
 
     <ProgressBar
         android:id="@+id/progressBar"
