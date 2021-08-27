@@ -19,16 +19,12 @@ import java.util.Map;
 import java.util.Stack;
 
 public class LeitnerManager {
-    FirebaseAuth auth = FirebaseAuth.getInstance();
-    FirebaseUser user = auth.getCurrentUser();
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    DBhelper db = new DBhelper();
 
     private FlashcardCollection flashcardCollection;
     Map<String, Flashcard> box1, box2, box3;
     private Stack<Flashcard> flashcardsToFocus;
 
-    private String userID;
-    private DocumentReference colDocRef;
 
     public LeitnerManager(FlashcardCollection collection) {
         this.flashcardCollection = collection;
@@ -36,12 +32,6 @@ public class LeitnerManager {
         this.box2 = new HashMap<>();
         this.box3 = new HashMap<>();
         this.flashcardsToFocus = new Stack<>();
-
-        userID = user.getUid();
-        colDocRef = db.collection(Constants.COL_USERS)
-                .document(userID)
-                .collection(Constants.COL_FLASHCARD_COLLECTIONS)
-                .document(flashcardCollection.getId());
     }
 
     public void populateBoxes(int boxNumber, Flashcard flashcard) {
@@ -67,7 +57,7 @@ public class LeitnerManager {
             flashcard.setShow(true);
             flashcard.setBoxNumber(1);
             box1.put(flashcard.getId(), flashcard);
-            updateFlashcard(colDocRef, flashcard);
+            updateFlashcard(flashcard);
         }
         flashcardCollection.setBox2State(0);
         flashcardCollection.setBox3State(0);
@@ -116,7 +106,7 @@ public class LeitnerManager {
         }
         //remove the flashcard from the flashCardsToFocus map
         flashcardsToFocus.remove(flashcard.getId());
-        updateFlashcard(colDocRef, flashcard);
+        updateFlashcard(flashcard);
     }
 
     //should be called after populating all boxes
@@ -228,7 +218,7 @@ public class LeitnerManager {
         List<Flashcard> allFlashcards = getAllFlashcards();
         //update each flashcard document
         for (Flashcard flashcard : allFlashcards) {
-            updateFlashcard(colDocRef, flashcard);
+            updateFlashcard(flashcard);
         }
         updateCollection();
     }
@@ -239,7 +229,8 @@ public class LeitnerManager {
         changes.put("box1State", flashcardCollection.getBox1State());
         changes.put("box2State", flashcardCollection.getBox2State());
         changes.put("box3State", flashcardCollection.getBox3State());
-        colDocRef.update(changes)
+        db.getFlashcardCollectionDocRef(flashcardCollection.getId())
+                .update(changes)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
@@ -252,12 +243,11 @@ public class LeitnerManager {
                 });
     }
 
-    private void updateFlashcard(DocumentReference colDocRef, Flashcard flashcard) {
+    private void updateFlashcard(Flashcard flashcard) {
         Map<String, Object> changes = new HashMap<>();
         changes.put("show", flashcard.isShow());
         changes.put("boxNumber", flashcard.getBoxNumber());
-        colDocRef.collection(Constants.COL_FLASHCARD_LIST)
-                .document(flashcard.getId())
+        db.getFlashcardDocRef(flashcardCollection.getId(), flashcard.getId())
                 .update(changes)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override

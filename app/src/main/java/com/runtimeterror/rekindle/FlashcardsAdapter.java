@@ -24,14 +24,12 @@ import java.util.List;
 public class FlashcardsAdapter extends RecyclerView.Adapter<FlashcardsAdapter.FlashcardViewHolder> {
     private List<Flashcard> flashcardList = new ArrayList<>();
     private String collectionID;
-    private String userID;
     private Context context;
 
-    public FlashcardsAdapter(Context context, List<Flashcard> flashcards, String collectionID, String userID) {
+    public FlashcardsAdapter(Context context, List<Flashcard> flashcards, String collectionID) {
         this.context = context;
         this.flashcardList = flashcards;
         this.collectionID = collectionID;
-        this.userID = userID;
     }
 
     public static class FlashcardViewHolder extends RecyclerView.ViewHolder {
@@ -64,7 +62,6 @@ public class FlashcardsAdapter extends RecyclerView.Adapter<FlashcardsAdapter.Fl
             public void onClick(View v) {
                 Context context = holder.editButton.getContext();
                 Intent intent = new Intent(context, EditFlashcard.class);
-                intent.putExtra("userID", userID);
                 intent.putExtra("collectionID", collectionID);
                 intent.putExtra("flashcardID", current.getId());
                 intent.putExtra("question", current.getQuestion());
@@ -91,13 +88,8 @@ public class FlashcardsAdapter extends RecyclerView.Adapter<FlashcardsAdapter.Fl
     }
 
     private void removeFlashcard(Flashcard flashcard, int position) {
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection(Constants.COL_USERS)
-                .document(userID)
-                .collection(Constants.COL_FLASHCARD_COLLECTIONS)
-                .document(collectionID)
-                .collection(Constants.COL_FLASHCARD_LIST)
-                .document(flashcard.getId())
+        DBhelper db = new DBhelper();
+        db.getFlashcardDocRef(collectionID, flashcard.getId())
                 .delete()
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override

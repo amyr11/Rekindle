@@ -134,7 +134,7 @@ public class PersonalFlashcardsActivity extends AppCompatActivity {
     }
 
     private void recyclerViewInit() {
-        flashcardsAdapter = new FlashcardsAdapter(this, flashcardList, collectionID, db.getUser().getUid());
+        flashcardsAdapter = new FlashcardsAdapter(this, flashcardList, collectionID);
         flashcardsRecyclerView.setAdapter(flashcardsAdapter);
         flashcardsRecyclerView.setLayoutManager(layoutManager);
     }
