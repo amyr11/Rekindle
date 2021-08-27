@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="@dimen/_4sdp">
+    android:padding="@dimen/_4sdp"
+    android:background="@color/purple_bg">
 
     <com.makeramen.roundedimageview.RoundedImageView
         android:id="@+id/imageProfile"
@@ -26,5 +27,16 @@
         app:layout_constraintStart_toEndOf="@id/imageProfile"
         android:layout_marginStart="@dimen/_10sdp"
         app:layout_constraintTop_toTopOf="parent"/>
+
+    <ImageView
+        android:layout_width="@dimen/_4sdp"
+        android:layout_height="@dimen/_18sdp"
+        android:layout_marginEnd="26dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:src="@drawable/ic_button_more"
+        app:layout_constraintHorizontal_bias="1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
