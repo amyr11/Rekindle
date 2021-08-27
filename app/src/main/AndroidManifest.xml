@@ -15,7 +15,8 @@
             android:exported="true" />
         <activity
             android:name=".ThreadGroupChat"
-            android:exported="true"/>
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize"/>
         <activity
             android:name=".EditFlashcard"
             android:exported="true"
