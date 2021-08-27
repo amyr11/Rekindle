@@ -8,8 +8,9 @@
     android:background="@color/purple_bg"
     tools:context=".ReviewFlashcards">
 
-    <include layout="@layout/header_with_back_and_textbutton"
-        android:id="@+id/include"/>
+    <include
+        android:id="@+id/include"
+        layout="@layout/header_with_back_and_textbutton" />
 
     <TextView
         android:id="@+id/collectionSet"
@@ -30,7 +31,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginHorizontal="46dp"
-        android:elevation="0dp"
+        app:cardElevation="0dp"
         app:cardBackgroundColor="@color/purple_dark"
         app:cardCornerRadius="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -60,7 +61,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="27dp"
-        android:elevation="0dp"
+        app:cardElevation="0dp"
         app:cardBackgroundColor="@color/purple_light"
         app:cardCornerRadius="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -86,6 +87,7 @@
 
     <LinearLayout
         android:id="@+id/answerChecker"
+        android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="31dp"
@@ -97,18 +99,20 @@
         app:layout_constraintTop_toBottomOf="@+id/flipButtonContainer"
         app:layout_constraintVertical_bias="0">
 
-        <ImageView
+        <ImageButton
             android:id="@+id/button_wrong"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="21dp"
+            android:background="@null"
             android:src="@drawable/ic_button_wrong_answer" />
 
-        <ImageView
+        <ImageButton
             android:id="@+id/button_correct"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="21dp"
+            android:background="@null"
             android:src="@drawable/ic_button_correct_answer" />
     </LinearLayout>
 
@@ -266,5 +270,15 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <include
+        layout="@layout/progress_bar"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
