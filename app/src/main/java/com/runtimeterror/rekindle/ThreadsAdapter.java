@@ -44,7 +44,7 @@ public class ThreadsAdapter extends RecyclerView.Adapter<ThreadsAdapter.ThreadVi
         holder.container.setCardBackgroundColor(
                 ViewUtils.getCardColor(holder.container.getContext(), current.getTheme())
         );
-        holder.threadName.setText(current.getName());
+        holder.threadName.setText("# " + current.getName());
         int memberCount = current.getMemberCount();
         String membersString =  memberCount > 1 ? memberCount + " Members" : memberCount + " Member";
         holder.memberCount.setText(membersString);

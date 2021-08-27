@@ -3,6 +3,7 @@ package com.runtimeterror.rekindle;
 import com.google.firebase.firestore.Exclude;
 import com.google.firebase.firestore.ServerTimestamp;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -10,18 +11,28 @@ public class RekindleThread {
     @Exclude
     private String id;
     @ServerTimestamp
-    private Date date;
+    private Date createdAt;
+    private String createdBy;
     private String name;
     private int theme;
     private List<String> members;
 
     public RekindleThread() {}
 
-    public RekindleThread(Date date, String name, int theme, List<String> members) {
-        this.date = date;
+    public RekindleThread(Date createdAt, String name, int theme, List<String> members) {
+        this.createdAt = createdAt;
         this.name = name;
         this.theme = theme;
         this.members = members;
+    }
+
+    public RekindleThread(Date createdAt, String name, int theme, String creator) {
+        this.createdAt = createdAt;
+        this.name = name;
+        this.theme = theme;
+        this.members = new ArrayList<>();
+        this.createdBy = creator;
+        this.members.add(creator);
     }
 
     public String getId() {
@@ -32,12 +43,12 @@ public class RekindleThread {
         this.id = id;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getCreatedAt() {
+        return createdAt;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 
     public String getName() {
@@ -66,5 +77,13 @@ public class RekindleThread {
 
     public void setMembers(List<String> members) {
         this.members = members;
+    }
+
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
     }
 }

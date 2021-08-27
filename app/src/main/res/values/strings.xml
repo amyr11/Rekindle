@@ -39,4 +39,10 @@
     <string name="edit_nflashcard">Edit\nFlashcard</string>
     <string name="flip">Flip</string>
     <string name="my_nthreads">My\nThreads</string>
+    <string name="when_this_thread_is_closed_there_will_be_a_mock_quiz_for_every_member_of_this_thread_n_n_only_members_who_have_competitive_mode_turned_on_are_able_to_join_the_mock_quiz">When this thread is closed, there will be a mock quiz for every member of this thread.\n\n*Only members who have competitive mode turned on are able to join the mock quiz.</string>
+    <string name="thread_name">Thread name</string>
+    <string name="create_a_nnew_thread">Create a\nnew Thread</string>
+    <string name="or">or</string>
+    <string name="join_a_thread">Join a Thread</string>
+    <string name="instead">instead.</string>
 </resources>

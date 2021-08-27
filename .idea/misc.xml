@@ -58,6 +58,7 @@
         <entry key="app/src/main/res/layout/activity_create_flashcard_collection.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_create_flashcard_personal.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_create_flashcard_thread.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_create_thread.xml" value="0.5" />
         <entry key="app/src/main/res/layout/activity_edit_flashcard.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_edit_flashcard_collection.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.11510416666666666" />

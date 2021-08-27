@@ -1,6 +1,7 @@
 package com.runtimeterror.rekindle;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -19,6 +20,7 @@ import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -82,6 +84,7 @@ public class ThreadsFragment extends Fragment {
     private RecyclerView threadsRecyclerView;
     private ThreadsAdapter threadsAdapter;
     private RecyclerView.LayoutManager layoutManager;
+    private static boolean allowRefesh = false;
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -95,7 +98,9 @@ public class ThreadsFragment extends Fragment {
         addThreadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO: open add thread activity
+                Context context = addThreadButton.getContext();
+                Intent intent = new Intent(context, CreateThread.class);
+                context.startActivity(intent);
             }
         });
         threadsRecyclerView = view.findViewById(R.id.threads_recyclerview);
@@ -116,6 +121,8 @@ public class ThreadsFragment extends Fragment {
             @Override
             public void run() {
                 db.getThreadsColRef()
+                        .whereArrayContains("members", db.getUser().getUid())
+                        .orderBy("createdAt", Query.Direction.DESCENDING)
                         .get()
                         .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                             @Override
@@ -138,5 +145,19 @@ public class ThreadsFragment extends Fragment {
                         });
             }
         }, 0);
+    }
+
+    public static void allowRefresh() {
+        allowRefesh = true;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (allowRefesh) {
+            allowRefesh = false;
+            loadThreads();
+            getParentFragmentManager().beginTransaction().detach(this).attach(this).commit();
+        }
     }
 }
