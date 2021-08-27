@@ -7,6 +7,7 @@
     android:layout_marginBottom="15dp"
     app:cardBackgroundColor="@color/orange_light"
     app:cardCornerRadius="20dp"
+    android:id="@+id/thread_container"
     android:foreground="?android:attr/selectableItemBackground"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
@@ -34,7 +35,7 @@
             app:layout_constraintVertical_bias="0.49">
 
             <TextView
-                android:id="@+id/collectionName"
+                android:id="@+id/threadName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_medium"

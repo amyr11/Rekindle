@@ -13,6 +13,7 @@ public class DBhelper {
 
     private DocumentReference userDocRef;
     private CollectionReference flashcardCollectionsColRef;
+    private CollectionReference threadsColRef;
 
     public DBhelper() {
         db = FirebaseFirestore.getInstance();
@@ -21,6 +22,7 @@ public class DBhelper {
 
         userDocRef = db.collection(Constants.COL_USERS)
                 .document(user.getUid());
+        threadsColRef = db.collection(Constants.COL_THREADS);
         flashcardCollectionsColRef = userDocRef.collection(Constants.COL_FLASHCARD_COLLECTIONS);
     }
 
@@ -47,5 +49,9 @@ public class DBhelper {
 
     public DocumentReference getFlashcardDocRef(String collectionID, String flashcardID) {
         return getFlashcardListColRef(collectionID).document(flashcardID);
+    }
+
+    public CollectionReference getThreadsColRef() {
+        return threadsColRef;
     }
 }
