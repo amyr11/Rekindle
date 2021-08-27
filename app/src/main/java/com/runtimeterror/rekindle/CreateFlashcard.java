@@ -22,18 +22,16 @@ import com.google.protobuf.TimestampProto;
 import java.util.Date;
 
 public class CreateFlashcard extends AppCompatActivity {
-    protected FirebaseFirestore db = FirebaseFirestore.getInstance();
+    protected DBhelper db = new DBhelper();
     protected EditText questionEditText, answerEditText;
     protected TextView saveButton, cancelButton;
     protected String collectionID;
-    protected String userID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_flashcard_personal);
         collectionID = getIntent().getStringExtra("collectionID");
-        userID = getIntent().getStringExtra("userID");
         viewsInit();
     }
 
@@ -71,11 +69,7 @@ public class CreateFlashcard extends AppCompatActivity {
 
     //Override for thread
     private CollectionReference getSubCollection() {
-        return db.collection(Constants.COL_USERS)
-                .document(userID)
-                .collection(Constants.COL_FLASHCARD_COLLECTIONS)
-                .document(collectionID)
-                .collection(Constants.COL_FLASHCARD_LIST);
+        return db.getFlashcardListColRef(collectionID);
     }
 
     private void addToCollection(Flashcard flashcard) {

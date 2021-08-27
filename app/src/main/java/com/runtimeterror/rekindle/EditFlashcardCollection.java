@@ -42,10 +42,7 @@ public class EditFlashcardCollection extends CreateFlashcardCollection {
         collection.put(FlashcardCollection.FCOLLECTION_ABBR_TITLE, FlashcardCollection.generateAbbr(titleFull));
 
         collectionId = getIntent().getStringExtra("collectionID");
-        db.collection(Constants.COL_USERS)
-                .document(userUID)
-                .collection(Constants.COL_FLASHCARD_COLLECTIONS)
-                .document(collectionId)
+        db.getFlashcardCollectionDocRef(collectionId)
                 .update(collection)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override

@@ -29,7 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PersonalFlashcardsActivity extends AppCompatActivity {
-    private FirebaseFirestore db;
+    private DBhelper db;
     private ImageButton backButton;
     private TextView collectionTitle, reviewButton;
     private ImageButton editButton, removeButton;
@@ -38,12 +38,10 @@ public class PersonalFlashcardsActivity extends AppCompatActivity {
     private RecyclerView flashcardsRecyclerView;
     private FlashcardsAdapter flashcardsAdapter;
     private RecyclerView.LayoutManager layoutManager;
-    private String collectionID;
     private FlashcardCollection flashcardCollection;
-    private String userID;
     private List<Flashcard> flashcardList;
     private boolean colInfoLoaded = false, listLoaded = false;
-    private CollectionReference fCollectionsRef, flashcardsRef;
+    private String collectionID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,13 +49,7 @@ public class PersonalFlashcardsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_all_flashcards);
 
         collectionID = getIntent().getStringExtra("collectionID");
-        userID = getIntent().getStringExtra("userID");
-        db = FirebaseFirestore.getInstance();
-        fCollectionsRef = db.collection(Constants.COL_USERS)
-                .document(userID)
-                .collection(Constants.COL_FLASHCARD_COLLECTIONS);
-        flashcardsRef = fCollectionsRef.document(collectionID)
-                .collection(Constants.COL_FLASHCARD_LIST);
+        db = new DBhelper();
         backButton = findViewById(R.id.button_back);
         progressBar = findViewById(R.id.progress_bar);
         collectionTitle = findViewById(R.id.collectionSet);
@@ -87,7 +79,7 @@ public class PersonalFlashcardsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), CreateFlashcard.class);
                 intent.putExtra("collectionID", collectionID);
-                intent.putExtra("userID", userID);
+                intent.putExtra("userID", db.getUser().getUid());
                 startActivity(intent);
             }
         });
@@ -98,7 +90,7 @@ public class PersonalFlashcardsActivity extends AppCompatActivity {
                 Intent intent = new Intent(context, EditFlashcardCollection.class);
                 intent.putExtra("collectionID", collectionID);
                 intent.putExtra("collectionName", flashcardCollection.getTitleFull());
-                intent.putExtra("userUID", userID);
+                intent.putExtra("userUID", db.getUser().getUid());
                 context.startActivity(intent);
             }
         });
@@ -126,7 +118,7 @@ public class PersonalFlashcardsActivity extends AppCompatActivity {
                 Context context = reviewButton.getContext();
                 Intent intent = new Intent(context, ReviewFlashcards.class);
                 intent.putExtra("collectionID", collectionID);
-                intent.putExtra("userID", userID);
+                intent.putExtra("userID", db.getUser().getUid());
                 context.startActivity(intent);
             }
         });
@@ -142,7 +134,7 @@ public class PersonalFlashcardsActivity extends AppCompatActivity {
     }
 
     private void recyclerViewInit() {
-        flashcardsAdapter = new FlashcardsAdapter(this, flashcardList, collectionID, userID);
+        flashcardsAdapter = new FlashcardsAdapter(this, flashcardList, collectionID, db.getUser().getUid());
         flashcardsRecyclerView.setAdapter(flashcardsAdapter);
         flashcardsRecyclerView.setLayoutManager(layoutManager);
     }
@@ -150,7 +142,8 @@ public class PersonalFlashcardsActivity extends AppCompatActivity {
     private void removeCollection() {
         //remove all flashcards
         for (Flashcard flashcard : flashcardList) {
-            flashcardsRef.document(flashcard.getId())
+            db.getFlashcardListColRef(collectionID)
+                    .document(flashcard.getId())
                     .delete()
                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
@@ -165,7 +158,7 @@ public class PersonalFlashcardsActivity extends AppCompatActivity {
         }
 
         //remove collection
-        fCollectionsRef.document(collectionID)
+        db.getFlashcardCollectionsColRef().document(collectionID)
                 .delete()
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
@@ -180,9 +173,7 @@ public class PersonalFlashcardsActivity extends AppCompatActivity {
     }
 
     private void loadCollectionInfo() {
-        db.collection(Constants.COL_USERS)
-                .document(userID)
-                .collection(Constants.COL_FLASHCARD_COLLECTIONS)
+        db.getFlashcardCollectionsColRef()
                 .document(collectionID)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -205,11 +196,7 @@ public class PersonalFlashcardsActivity extends AppCompatActivity {
 
     private void loadFlashcards() {
         flashcardList = new ArrayList<>();
-        db.collection(Constants.COL_USERS)
-                .document(userID)
-                .collection(Constants.COL_FLASHCARD_COLLECTIONS)
-                .document(collectionID)
-                .collection(Constants.COL_FLASHCARD_LIST)
+        db.getFlashcardListColRef(collectionID)
                 .orderBy("date", Query.Direction.DESCENDING)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {

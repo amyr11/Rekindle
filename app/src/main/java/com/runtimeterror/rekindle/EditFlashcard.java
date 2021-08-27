@@ -42,12 +42,7 @@ public class EditFlashcard extends CreateFlashcard {
         flashcard.put("answer", answer);
 
         flashcardID = getIntent().getStringExtra("flashcardID");
-        db.collection(Constants.COL_USERS)
-                .document(userID)
-                .collection(Constants.COL_FLASHCARD_COLLECTIONS)
-                .document(collectionID)
-                .collection(Constants.COL_FLASHCARD_LIST)
-                .document(flashcardID)
+        db.getFlashcardDocRef(collectionID, flashcardID)
                 .update(flashcard)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override

@@ -18,17 +18,15 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.Date;
 
 public class CreateFlashcardCollection extends AppCompatActivity {
-    protected FirebaseFirestore db;
+    protected DBhelper db;
     protected EditText colNameEditText;
     protected TextView saveButton, cancelButton;
-    protected String userUID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_flashcard_collection);
-        db = FirebaseFirestore.getInstance();
-        userUID = getIntent().getStringExtra("userUID");
+        db = new DBhelper();
         viewsInit();
 
     }
@@ -58,9 +56,7 @@ public class CreateFlashcardCollection extends AppCompatActivity {
     }
 
     private void addCollection(FlashcardCollection collection) {
-        db.collection(Constants.COL_USERS)
-                .document(userUID)
-                .collection(Constants.COL_FLASHCARD_COLLECTIONS)
+        db.getFlashcardCollectionsColRef()
                 .add(collection)
                 .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                     @Override

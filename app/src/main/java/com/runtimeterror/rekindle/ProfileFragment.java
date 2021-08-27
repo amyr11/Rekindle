@@ -77,9 +77,7 @@ public class ProfileFragment extends Fragment {
         }
     }
 
-    private FirebaseAuth mAuth;
-    private FirebaseUser user;
-    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private DBhelper db = new DBhelper();
     private View progressBar;
     private ImageView profilePhoto, silverMedal, goldMedal, bronzeMedal;
     private TextView usernameText, threadCntText, pointsText,
@@ -117,10 +115,7 @@ public class ProfileFragment extends Fragment {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                mAuth = FirebaseAuth.getInstance();
-                user = mAuth.getCurrentUser();
-                db.collection(Constants.COL_USERS)
-                        .document(user.getUid())
+                db.getUserDocRef()
                         .get()
                         .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                             @Override

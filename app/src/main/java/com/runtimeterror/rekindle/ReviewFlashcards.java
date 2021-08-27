@@ -30,7 +30,7 @@ import java.util.List;
 import java.util.Map;
 
 public class ReviewFlashcards extends AppCompatActivity {
-    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private DBhelper db = new DBhelper();
 
     private View progressBar;
     private TextView collectionTitle, cardContent, flipButton,
@@ -40,7 +40,6 @@ public class ReviewFlashcards extends AppCompatActivity {
     private View answerChecker;
 
     private String collectionId;
-    private String userId;
 
     private FlashcardCollection collection;
     private Flashcard currentFlashcard;
@@ -63,7 +62,6 @@ public class ReviewFlashcards extends AppCompatActivity {
 
     private void getIntents() {
         collectionId = getIntent().getStringExtra("collectionID");
-        userId = getIntent().getStringExtra("userID");
     }
 
     protected void viewsInit() {
@@ -165,25 +163,11 @@ public class ReviewFlashcards extends AppCompatActivity {
         memorizedWellCount.setText(String.valueOf(leitnerManager.getBoxSize(3)));
     }
 
-    //gets the reference of the list of flashcards
-    protected CollectionReference getFlashcardListRef() {
-        return getFlashcardCollectionRef()
-                .collection(Constants.COL_FLASHCARD_LIST);
-    }
-
-    //gets the reference of the flashcard collection document
-    protected DocumentReference getFlashcardCollectionRef() {
-        return db.collection(Constants.COL_USERS)
-                .document(userId)
-                .collection(Constants.COL_FLASHCARD_COLLECTIONS)
-                .document(collectionId);
-    }
-
     private void loadCollectionInfo() {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                getFlashcardCollectionRef()
+                db.getFlashcardCollectionDocRef(collectionId)
                         .get()
                         .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                             @Override
@@ -210,7 +194,7 @@ public class ReviewFlashcards extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                getFlashcardListRef()
+                db.getFlashcardListColRef(collectionId)
                         .orderBy("date", Query.Direction.DESCENDING)
                         .get()
                         .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {

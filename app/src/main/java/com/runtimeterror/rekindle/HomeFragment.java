@@ -78,9 +78,7 @@ public class HomeFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_home, container, false);
     }
 
-    private FirebaseAuth mAuth;
-    private FirebaseUser user;
-    private FirebaseFirestore db;
+    private DBhelper db;
     private RecyclerView collectionsRecyclerview;
     private CollectionsAdapter collectionsAdapter;
     private RecyclerView.LayoutManager layoutManager;
@@ -101,7 +99,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void recyclerViewInit() {
-        collectionsAdapter = new CollectionsAdapter(flashcardCollections, user.getUid());
+        collectionsAdapter = new CollectionsAdapter(flashcardCollections);
         collectionsRecyclerview.setAdapter(collectionsAdapter);
         collectionsRecyclerview.setLayoutManager(layoutManager);
         collectionsRecyclerview.setNestedScrollingEnabled(false);
@@ -113,13 +111,7 @@ public class HomeFragment extends Fragment {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                mAuth = FirebaseAuth.getInstance();
-                user = mAuth.getCurrentUser();
-                assert user != null;
-                db = FirebaseFirestore.getInstance();
-                db.collection(Constants.COL_USERS)
-                        .document(user.getUid())
-                        .collection(Constants.COL_FLASHCARD_COLLECTIONS)
+                db.getFlashcardCollectionsColRef()
                         .orderBy("date", Query.Direction.DESCENDING)
                         .get()
                         .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -146,6 +138,7 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        db = new DBhelper();
         viewsInit(view);
     }
 

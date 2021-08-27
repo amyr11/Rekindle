@@ -18,11 +18,9 @@ public class CollectionsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     private static final int COLLECTION = 1;
 
     private List<FlashcardCollection> flashcardCollectionList;
-    private final String currentUserID;
 
-    public CollectionsAdapter(List<FlashcardCollection> list, String currentUserID) {
+    public CollectionsAdapter(List<FlashcardCollection> list) {
         this.flashcardCollectionList = list;
-        this.currentUserID = currentUserID;
     }
 
     public static class CollectionViewHolder extends RecyclerView.ViewHolder {
@@ -59,7 +57,6 @@ public class CollectionsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                 Context context = collectionViewHolder.container.getContext();
                 Intent intent = new Intent(context, PersonalFlashcardsActivity.class);
                 intent.putExtra("collectionID", current.getId());
-                intent.putExtra("userID", currentUserID);
                 context.startActivity(intent);
             }
         });
@@ -75,7 +72,6 @@ public class CollectionsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                 Context context = collectionViewHolder.reviewButton.getContext();
                 Intent intent = new Intent(context, ReviewFlashcards.class);
                 intent.putExtra("collectionID", current.getId());
-                intent.putExtra("userID", currentUserID);
                 context.startActivity(intent);
             }
         });
@@ -88,7 +84,6 @@ public class CollectionsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             public void onClick(View v) {
                 Context context = addCollectionViewHolder.container.getContext();
                 Intent intent = new Intent(context, CreateFlashcardCollection.class);
-                intent.putExtra("userUID", currentUserID);
                 context.startActivity(intent);
             }
         });
