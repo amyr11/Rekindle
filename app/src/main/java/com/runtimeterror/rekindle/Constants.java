@@ -16,4 +16,7 @@ public class Constants {
     public static int PINK = 4;
     public static int COLLECTIONS_CHAR_LIMIT = 40;
     public static int COLLECTIONS_ABBR_LIMIT = 6;
+    public static int BOX1_THRESHOLD = 0;
+    public static int BOX2_THRESHOLD = 2;
+    public static int BOX3_THRESHOLD = 5;
 }

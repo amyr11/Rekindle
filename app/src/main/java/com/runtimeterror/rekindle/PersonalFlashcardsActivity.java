@@ -120,6 +120,16 @@ public class PersonalFlashcardsActivity extends AppCompatActivity {
                         .show();
             }
         });
+        reviewButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Context context = reviewButton.getContext();
+                Intent intent = new Intent(context, ReviewFlashcards.class);
+                intent.putExtra("collectionID", collectionID);
+                intent.putExtra("userID", userID);
+                context.startActivity(intent);
+            }
+        });
 
         progressBar.setVisibility(View.VISIBLE);
         new Handler().postDelayed(new Runnable() {

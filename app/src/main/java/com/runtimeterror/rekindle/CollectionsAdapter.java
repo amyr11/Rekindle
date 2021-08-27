@@ -72,7 +72,11 @@ public class CollectionsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         collectionViewHolder.reviewButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO: open review flashcard activity
+                Context context = collectionViewHolder.reviewButton.getContext();
+                Intent intent = new Intent(context, ReviewFlashcards.class);
+                intent.putExtra("collectionID", current.getId());
+                intent.putExtra("userID", currentUserID);
+                context.startActivity(intent);
             }
         });
     }
