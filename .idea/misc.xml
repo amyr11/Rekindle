@@ -72,8 +72,8 @@
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_second.xml" value="0.18981481481481483" />
-        <entry key="app/src/main/res/layout/fragment_threads.xml" value="0.22916666666666666" />
-        <entry key="app/src/main/res/layout/header_with_back.xml" value="0.2037037037037037" />
+        <entry key="app/src/main/res/layout/fragment_threads.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/header_with_back.xml" value="0.33" />
         <entry key="app/src/main/res/layout/header_with_back_and_textbutton.xml" value="0.33" />
         <entry key="app/src/main/res/layout/item_add_collection.xml" value="0.2037037037037037" />
         <entry key="app/src/main/res/layout/item_collection_flashcard.xml" value="0.33" />

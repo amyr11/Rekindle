@@ -80,6 +80,7 @@
             android:layout_gravity="center"
             android:fontFamily="@font/roboto_medium"
             android:text="@string/flip"
+            android:foreground="?android:attr/selectableItemBackground"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="18sp" />
@@ -272,7 +273,6 @@
 
     <include
         layout="@layout/progress_bar"
-        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="50dp"

@@ -54,6 +54,6 @@
     </androidx.core.widget.NestedScrollView>
 
     <include layout="@layout/progress_bar"
-        android:visibility="visible"/>
+        android:visibility="gone"/>
 
 </RelativeLayout>
