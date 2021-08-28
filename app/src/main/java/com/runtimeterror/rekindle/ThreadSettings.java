@@ -10,17 +10,23 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldValue;
+
+import java.util.List;
 
 public class ThreadSettings extends AppCompatActivity {
     private TextView copyThreadCode, viewMembers, leaveThread, closeThread;
     private String threadID;
     private boolean isOwned;
+    private String status;
     private DBhelper db = new DBhelper();
     private boolean removedUserFromThread = false, removedThreadFromUser = false;
 
@@ -30,6 +36,7 @@ public class ThreadSettings extends AppCompatActivity {
         setContentView(R.layout.activity_thread_settings);
         threadID = getIntent().getStringExtra("threadID");
         isOwned = getIntent().getBooleanExtra("isOwned", false);
+        status = getIntent().getStringExtra("status");
 
         ViewUtils.setHeader(this, "Thread menu");
         copyThreadCode = findViewById(R.id.copy_thread_code);
@@ -76,13 +83,94 @@ public class ThreadSettings extends AppCompatActivity {
         } else {
             leaveThread.setVisibility(View.GONE);
             closeThread.setVisibility(View.VISIBLE);
-            closeThread.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    //TODO: close thread
-                }
-            });
+            if (status.equals(Constants.THREAD_OPEN)) {
+                closeThread.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        new AlertDialog.Builder(leaveThread.getContext())
+                                .setTitle("Close Thread")
+                                .setMessage("Closing this Thread will trigger Mockup Quiz to start. This cannot be undone.")
+                                .setPositiveButton("Cancel", null)
+                                .setNegativeButton("Close", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        updateThreadStatus(Constants.THREAD_CLOSED);
+                                    }
+                                })
+                                .show();
+                    }
+                });
+            } else if (status.equals(Constants.THREAD_CLOSED)) {
+                closeThread.setText(R.string.delete_thread);
+                closeThread.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        new AlertDialog.Builder(leaveThread.getContext())
+                                .setTitle("Delete Thread")
+                                .setMessage("Deleting this thread will remove all members.")
+                                .setPositiveButton("Cancel", null)
+                                .setNegativeButton("Delete", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        deleteThread();
+                                    }
+                                })
+                                .show();
+                    }
+                });
+            }
         }
+    }
+
+    private void deleteThread() {
+        db.getThreadDocRef(threadID)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if (task.isSuccessful()) {
+                            //get all member IDs
+                            List<String>  members = task.getResult().toObject(RekindleThread.class).getMembers();
+                            for (String memberID : members) {
+                                db.getUserDocRef(memberID)
+                                        .update(Constants.COL_THREADS, FieldValue.arrayRemove(threadID))
+                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                if (task.isSuccessful()) {
+                                                    Log.d(Constants.TAG, "Deleted thread for user");
+                                                }
+                                            }
+                                        });
+                            }
+                            db.getThreadDocRef(threadID)
+                                    .delete()
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if (task.isSuccessful()) {
+                                                Log.d(Constants.TAG, "Thread deleted completely.");
+                                                finishActivities();
+                                            }
+                                        }
+                                    });
+                        }
+                    }
+                });
+    }
+
+    private void updateThreadStatus(String status) {
+        db.getThreadDocRef(threadID)
+                .update(Constants.FIELD_STATUS, status)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            ThreadGroupChat.allowReferesh();
+                            finish();
+                        }
+                    }
+                });
     }
 
     private void leaveThread() {

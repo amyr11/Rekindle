@@ -10,25 +10,16 @@ import java.util.List;
 public class RekindleThread {
     @Exclude
     private String id;
-
-    @Exclude
-    private boolean isOwned;
     @ServerTimestamp
     private Date createdAt;
     private String createdBy;
     private String name;
+    private String status;
     private int theme;
     private List<String> members;
 
 
     public RekindleThread() {}
-
-    public RekindleThread(Date createdAt, String name, int theme, List<String> members) {
-        this.createdAt = createdAt;
-        this.name = name;
-        this.theme = theme;
-        this.members = members;
-    }
 
     public RekindleThread(Date createdAt, String name, int theme, String creator) {
         this.createdAt = createdAt;
@@ -37,12 +28,15 @@ public class RekindleThread {
         this.members = new ArrayList<>();
         this.createdBy = creator;
         this.members.add(creator);
+        this.status = Constants.THREAD_OPEN;
     }
 
+    @Exclude
     public String getId() {
         return id;
     }
 
+    @Exclude
     public void setId(String id) {
         this.id = id;
     }
@@ -92,11 +86,20 @@ public class RekindleThread {
         this.createdBy = createdBy;
     }
 
+    @Exclude
     public boolean isOwned() {
-        return isOwned;
+        DBhelper db = new DBhelper();
+        return getCreatedBy().equals(db.getUser().getUid());
     }
 
-    public void setOwned(boolean owned) {
-        isOwned = owned;
+    public String getStatus() {
+        if (status != null)
+            return status;
+        else
+            return Constants.THREAD_OPEN;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

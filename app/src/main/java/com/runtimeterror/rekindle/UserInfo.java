@@ -1,5 +1,7 @@
 package com.runtimeterror.rekindle;
 
+import com.google.firebase.firestore.Exclude;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -94,6 +96,14 @@ public class UserInfo {
 
     public List<String> getThreads() {
         return threads;
+    }
+
+    @Exclude
+    public int getThreadCount() {
+        if (threads != null)
+            return threads.size();
+        else
+            return 0;
     }
 
     public void setThreads(List<String> threads) {

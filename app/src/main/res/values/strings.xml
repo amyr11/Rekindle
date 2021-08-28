@@ -56,4 +56,5 @@
     <string name="kick">Kick</string>
     <string name="currentMember">currentMember</string>
     <string name="threadID">threadID</string>
+    <string name="delete_thread">Delete Thread</string>
 </resources>

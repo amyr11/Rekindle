@@ -14,20 +14,19 @@ import com.google.android.material.navigation.NavigationBarView;
 public class MainActivity extends AppCompatActivity {
 
     BottomNavigationView navigationView;
-    private Fragment fragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        fragment = null;
         navigationView=findViewById(R.id.BottomNavMenu);
         getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, new HomeFragment()).commit();
         navigationView.setSelectedItemId(R.id.home);
         navigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener(){
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                Fragment fragment = null;
                 switch (menuItem.getItemId())
                 {
                     case R.id.home:

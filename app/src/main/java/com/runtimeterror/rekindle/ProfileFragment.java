@@ -125,7 +125,7 @@ public class ProfileFragment extends Fragment {
                                     assert userInfo != null;
                                     new DownloadSpriteTask().execute(userInfo.getPhotoURL());
                                     usernameText.setText(userInfo.getUsername());
-                                    threadCntText.setText(String.valueOf(userInfo.getThreads().size()));
+                                    threadCntText.setText(String.valueOf(userInfo.getThreadCount()));
                                     pointsText.setText(String.valueOf(userInfo.getPoints()));
                                     setAchievements(userInfo.getGoldCnt(), userInfo.getSilverCnt(),
                                             userInfo.getBronzeCnt());

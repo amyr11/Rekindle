@@ -132,7 +132,6 @@ public class ThreadsFragment extends Fragment {
                                     for (QueryDocumentSnapshot doc : task.getResult()) {
                                         RekindleThread rekindleThread = doc.toObject(RekindleThread.class);
                                         rekindleThread.setId(doc.getId());
-                                        rekindleThread.setOwned(db.getUser().getUid().equals(rekindleThread.getCreatedBy()));
                                         threadList.add(rekindleThread);
                                     }
                                     recyclerViewInit(threadList);

@@ -27,7 +27,7 @@ public class ViewUtils {
         headerTitle.setText(title);
     }
 
-    public static void setHeaderChats(Activity activity, String title, String threadID, boolean isOwned) {
+    public static void setHeaderChats(Activity activity, RekindleThread thread) {
         ImageButton backButton = activity.findViewById(R.id.button_back);
         ImageButton viewFlashcards = activity.findViewById(R.id.button_view_flashcards);
         ImageButton more = activity.findViewById(R.id.button_more);
@@ -48,12 +48,13 @@ public class ViewUtils {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(activity.getApplicationContext(), ThreadSettings.class);
-                intent.putExtra("threadID", threadID);
-                intent.putExtra("isOwned", isOwned);
+                intent.putExtra("threadID", thread.getId());
+                intent.putExtra("isOwned", thread.isOwned());
+                intent.putExtra("status", thread.getStatus());
                 activity.startActivity(intent);
             }
         });
-        headerTitle.setText(title);
+        headerTitle.setText(limitChars("# " + thread.getName(), 25));
     }
 
     public static SwitchCompat getSwitchView(Activity activity, int viewId, String title) {
