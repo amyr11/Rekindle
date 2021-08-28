@@ -79,22 +79,20 @@ public class JoinExistingThread extends AppCompatActivity {
     }
 
     private void checkIfAlreadyMember(String threadCodeString) {
-        db.getThreadsColRef()
-                .document(threadCodeString)
+        db.getUserDocRef()
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                         if (task.isSuccessful()) {
-                            RekindleThread thread = task.getResult().toObject(RekindleThread.class);
-                            boolean alreadyAMember= thread.getMembers().contains(db.getUser().getUid());
-                            if (!alreadyAMember) {
-                                joinThread(threadCodeString);
-                            } else {
+                            UserInfo userInfo = task.getResult().toObject(UserInfo.class);
+                            if (userInfo.getThreads().contains(threadCodeString)) {
                                 Toast.makeText(getApplicationContext(), "You are already on this thread!", Toast.LENGTH_SHORT).show();
+                            } else {
+                                joinThread(threadCodeString);
                             }
                         } else {
-                            Log.w(Constants.TAG, "Failed to join thread CHECK", task.getException());
+                            Log.w(Constants.TAG, "Failed to get user info", task.getException());
                         }
                     }
                 });
