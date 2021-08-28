@@ -47,7 +47,6 @@ public class ViewUtils {
         more.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO: pass intent extra
                 Intent intent = new Intent(activity.getApplicationContext(), ThreadSettings.class);
                 intent.putExtra("threadID", threadID);
                 activity.startActivity(intent);

@@ -35,7 +35,6 @@ public class ThreadSettings extends AppCompatActivity {
         viewMembers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO: open view all members activity
                 Context context = viewMembers.getContext();
                 Intent intent = new Intent(context, MembersPanel.class);
                 intent.putExtra("threadID", threadID);
