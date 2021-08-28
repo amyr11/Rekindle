@@ -18,7 +18,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="13dp"
-        android:layout_marginTop="@dimen/_12sdp"
+        android:layout_marginVertical="8dp"
         app:cardBackgroundColor="@color/purple_bg"
         app:cardCornerRadius="100dp"
         app:cardElevation="0dp"
@@ -27,7 +27,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0">
+        app:layout_constraintVertical_bias="0.538">
 
         <ImageButton
             android:id="@+id/button_back"
@@ -43,17 +43,15 @@
         android:id="@+id/header_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_14sdp"
+        android:layout_marginStart="13dp"
         android:fontFamily="@font/roboto_medium"
-        android:background="@color/purple_bg"
         android:text="Header"
         android:textColor="@color/white"
-        android:textSize="@dimen/_20ssp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/cardView"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="@dimen/_11sdp"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

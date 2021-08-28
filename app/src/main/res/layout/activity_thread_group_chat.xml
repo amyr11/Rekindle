@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,142 +9,109 @@
     android:animateLayoutChanges="true"
     tools:context=".ThreadGroupChat">
 
-    <include
-        android:id="@+id/include2"
-        layout="@layout/header_with_back"
-        tools:layout_editor_absoluteY="367dp"
-        app:layout_constraintBottom_toTopOf="@id/viewSupporter"/>
-
-    <View
-        android:id="@+id/bacgroundView"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginBottom="@dimen/_16sdp"
-        android:background="@drawable/top_background_content"
-        app:layout_constraintBottom_toTopOf="@id/sendLayout"
-        app:layout_constraintTop_toBottomOf="@id/lineDivider"/>
+        android:layout_height="match_parent">
 
-    <View
-        android:id="@+id/viewSupporter"
+        <include
+            android:id="@+id/include3"
+            layout="@layout/header_with_back_chats"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="@dimen/_12sdp"
-        app:layout_constraintTop_toBottomOf="@id/lineDivider"/>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/chatRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:clipToPadding="false"
-        android:orientation="vertical"
-        android:overScrollMode="never"
-        android:padding="@dimen/_20sdp"
-        android:visibility="gone"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toBottomOf="@id/bacgroundView"
-        app:layout_constraintTop_toBottomOf="@id/viewSupporter"/>
-
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="@dimen/_25sdp"
-        android:layout_height="@dimen/_25sdp"
-        app:layout_constraintBottom_toBottomOf="@id/bacgroundView"
-        app:layout_constraintEnd_toEndOf="@id/bacgroundView"
-        app:layout_constraintStart_toStartOf="@id/bacgroundView"
-        app:layout_constraintTop_toTopOf="@id/bacgroundView"
-        />
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="@dimen/_4sdp"
-        android:layout_height="@dimen/_18sdp"
-        android:layout_marginEnd="26dp"
-        android:src="@drawable/ic_button_more"
-        app:layout_constraintBottom_toBottomOf="@+id/include2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1"
-        app:layout_constraintStart_toStartOf="@+id/include2"
-        app:layout_constraintTop_toTopOf="@+id/include2"
-        android:layout_marginTop="@dimen/_15sdp"/>
-
-    <ImageView
-        android:layout_width="@dimen/_24sdp"
-        android:layout_height="@dimen/_18sdp"
-        android:src="@drawable/ic_flashcards_button"
-        app:layout_constraintBottom_toBottomOf="@+id/include2"
-        app:layout_constraintEnd_toStartOf="@+id/imageView3"
-        app:layout_constraintHorizontal_bias="1"
-        app:layout_constraintStart_toStartOf="@+id/include2"
-        app:layout_constraintTop_toTopOf="@+id/include2"
-        android:layout_marginEnd="25dp"
-        android:layout_marginTop="@dimen/_15sdp"/>
-
-    <View
-        android:id="@+id/lineDivider"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_1sdp"
-        android:background="@color/purple_light"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include2"
-        app:layout_constraintVertical_bias="0.00"
-        android:layout_marginTop="@dimen/_11sdp"/>
-
-    <FrameLayout
-        android:id="@+id/sendLayout"
-        android:layout_width="@dimen/_22sdp"
-        android:layout_height="@dimen/_20sdp"
-        android:layout_marginEnd="@dimen/_15sdp"
-        android:layout_marginBottom="@dimen/_31sdp"
-        android:background="@color/purple_bg"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/ic_button_send_message"/>
-
-    </FrameLayout>
-    
-    <EditText
-        android:id="@+id/inputMessage"
-        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/_14sdp"
-        android:layout_marginBottom="@dimen/_24sdp"
-        android:background="@drawable/background_chat_input"
-        android:hint="Type a message"
-        android:imeOptions="actionDone"
-        android:importantForAutofill="no"
-        android:inputType="textMultiLine"
-        android:paddingStart="@dimen/_16sdp"
-        android:paddingEnd="@dimen/_16sdp"
-        android:textSize="@dimen/_16ssp"
-        android:fontFamily="@font/roboto_regular"
-        android:textColor="@color/white"
-        android:textColorHint="@color/purple_light"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/sendLayout"
-        app:layout_constraintStart_toEndOf="@id/flashcardAdd"
-        android:ems="10"/>
+        android:layout_alignParentBottom="true">
 
-    <FrameLayout
-        android:id="@+id/flashcardAdd"
-        android:layout_width="@dimen/_24sdp"
-        android:layout_height="@dimen/_18sdp"
-        android:layout_marginStart="@dimen/_15sdp"
-        android:layout_marginBottom="@dimen/_31sdp"
-        android:background="@color/purple_bg"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
-
-        <androidx.appcompat.widget.AppCompatImageView
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/ic_addflashcard_button"/>
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/purple_bg"
+            android:minHeight="67dp">
 
-    </FrameLayout>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:layout_marginStart="15dp"
+                app:cardBackgroundColor="@color/purple_bg"
+                app:cardCornerRadius="100dp"
+                app:cardElevation="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <ImageButton
+                    android:id="@+id/button_send_flashcard"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:background="@null"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:src="@drawable/ic_button_send_flashcard" />
+
+            </androidx.cardview.widget.CardView>
+
+            <EditText
+                android:id="@+id/inputMessage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/background_chat_input"
+                android:ems="10"
+                android:fontFamily="@font/roboto_regular"
+                android:hint="Type a message"
+                android:imeOptions="actionDone"
+                android:importantForAutofill="no"
+                android:inputType="textMultiLine"
+                android:maxLines="6"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/purple_light"
+                android:textSize="16sp"
+                app:layout_constrainedWidth="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/cardView4"
+                app:layout_constraintStart_toEndOf="@+id/cardView3"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:layout_marginEnd="12dp"
+                app:cardBackgroundColor="@color/purple_bg"
+                app:cardCornerRadius="100dp"
+                app:cardElevation="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.988"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageButton
+                    android:id="@+id/button_more"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:background="@null"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:src="@drawable/ic_button_send_message" />
+
+            </androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>
