@@ -2,6 +2,7 @@ package com.runtimeterror.rekindle;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.View;
 import android.widget.ImageButton;
@@ -47,6 +48,8 @@ public class ViewUtils {
             @Override
             public void onClick(View v) {
                 //TODO: open thread menu activity
+                Intent intent = new Intent(activity.getApplicationContext(), ThreadSettings.class);
+                activity.startActivity(intent);
             }
         });
         headerTitle.setText(title);
@@ -97,9 +100,16 @@ public class ViewUtils {
         }
     }
 
-    public static String limitChars(String string, int limit) {
+    public static String limitCharsNewLine(String string, int limit) {
         if (string.length() > limit) {
             return string.substring(0, limit) + "\n...";
+        }
+        return string;
+    }
+
+    public static String limitChars(String string, int limit) {
+        if (string.length() > limit) {
+            return string.substring(0, limit) + "...";
         }
         return string;
     }

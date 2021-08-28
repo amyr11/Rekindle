@@ -49,4 +49,8 @@
     <string name="type_code">Type code</string>
     <string name="copy">Copy</string>
     <string name="dismiss">Dismiss</string>
+    <string name="copy_thread_code">Copy thread code</string>
+    <string name="view_members">View members</string>
+    <string name="close_thread">Close thread</string>
+    <string name="leave_thread">Leave thread</string>
 </resources>

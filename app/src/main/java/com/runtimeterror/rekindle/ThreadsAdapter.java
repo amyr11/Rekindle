@@ -1,5 +1,7 @@
 package com.runtimeterror.rekindle;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ThreadsAdapter extends RecyclerView.Adapter<ThreadsAdapter.ThreadViewHolder> {
@@ -44,6 +45,16 @@ public class ThreadsAdapter extends RecyclerView.Adapter<ThreadsAdapter.ThreadVi
         holder.container.setCardBackgroundColor(
                 ViewUtils.getCardColor(holder.container.getContext(), current.getTheme())
         );
+        holder.container.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Context context = holder.container.getContext();
+                Intent intent = new Intent(context, ThreadGroupChat.class);
+                intent.putExtra("threadName", ViewUtils.limitChars(current.getName(), 15));
+                intent.putExtra("threadID", current.getId());
+                context.startActivity(intent);
+            }
+        });
         holder.threadName.setText("# " + current.getName());
         int memberCount = current.getMemberCount();
         String membersString =  memberCount > 1 ? memberCount + " Members" : memberCount + " Member";

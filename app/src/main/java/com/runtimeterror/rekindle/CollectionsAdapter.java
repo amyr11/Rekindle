@@ -65,7 +65,7 @@ public class CollectionsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         );
         collectionViewHolder.titleAbbrText.setText(current.getTitleAbbr());
         collectionViewHolder.titleFullText.setText(
-                ViewUtils.limitChars(current.getTitleFull(), Constants.COLLECTIONS_CHAR_LIMIT));
+                ViewUtils.limitCharsNewLine(current.getTitleFull(), Constants.COLLECTIONS_CHAR_LIMIT));
         collectionViewHolder.reviewButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

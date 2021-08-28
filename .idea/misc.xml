@@ -71,7 +71,7 @@
         <entry key="app/src/main/res/layout/activity_start.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_thread_chat.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_thread_group_chat.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_thread_settings.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_thread_settings.xml" value="0.25" />
         <entry key="app/src/main/res/layout/back_without_header.xml" value="0.2037037037037037" />
         <entry key="app/src/main/res/layout/fragment_first.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.25" />
@@ -87,6 +87,7 @@
         <entry key="app/src/main/res/layout/item_thread.xml" value="0.33" />
         <entry key="app/src/main/res/layout/join_cancel.xml" value="0.2037037037037037" />
         <entry key="app/src/main/res/layout/line.xml" value="0.2037037037037037" />
+        <entry key="app/src/main/res/layout/line_margin.xml" value="0.2037037037037037" />
         <entry key="app/src/main/res/layout/line_on_card.xml" value="0.2037037037037037" />
         <entry key="app/src/main/res/layout/progress_bar.xml" value="0.2037037037037037" />
         <entry key="app/src/main/res/layout/save_cancel.xml" value="0.25" />

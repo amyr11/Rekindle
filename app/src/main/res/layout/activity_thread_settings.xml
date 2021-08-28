@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,153 +9,79 @@
     tools:context=".ThreadSettings">
 
     <include
-        android:id="@+id/headerwithBack"
+        android:id="@+id/include4"
         layout="@layout/header_with_back"
-        tools:layout_editor_absoluteY="367dp" />
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="@dimen/_4sdp"
-        android:layout_height="@dimen/_18sdp"
-        android:layout_marginEnd="26dp"
-        android:src="@drawable/ic_button_more"
-        app:layout_constraintBottom_toBottomOf="@+id/headerwithBack"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1"
-        app:layout_constraintStart_toStartOf="@+id/headerwithBack"
-        app:layout_constraintTop_toTopOf="@+id/headerwithBack"
-        android:layout_marginTop="@dimen/_15sdp"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <View
-        android:id="@+id/lineDivider"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_1sdp"
-        android:background="@color/purple_light"
+        android:layout_height="500dp"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/headerwithBack"
-        app:layout_constraintVertical_bias="0.00"
-        android:layout_marginTop="@dimen/_11sdp"/>
+        app:layout_constraintTop_toBottomOf="@+id/include4"
+        app:layout_constraintVertical_bias="0.0">
 
-    <TextView
-        android:id="@+id/ctc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Copy thread code"
-        android:textColor="@color/white"
-        android:fontFamily="@font/roboto_medium"
-        android:textSize="@dimen/_15ssp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/lineDivider"
-        app:layout_constraintVertical_bias="0"
-        android:layout_marginStart="@dimen/_26sdp"
-        android:layout_marginTop="@dimen/_27sdp"/>
+        <TextView
+            android:id="@+id/copy_thread_code"
+            android:paddingVertical="15dp"
+            android:paddingHorizontal="26dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:fontFamily="@font/roboto_regular"
+            android:text="@string/copy_thread_code"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
 
-    <View
-        android:id="@+id/lineDivider2"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_1sdp"
-        android:background="@color/purple_dark"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ctc"
-        app:layout_constraintVertical_bias="0.00"
-        android:layout_marginHorizontal="@dimen/_26sdp"
-        android:layout_marginTop="@dimen/_5sdp"/>
+        <include layout="@layout/line_margin"/>
 
-    <TextView
-        android:id="@+id/vm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="View members"
-        android:textColor="@color/white"
-        android:fontFamily="@font/roboto_medium"
-        android:textSize="@dimen/_15ssp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/lineDivider2"
-        app:layout_constraintVertical_bias="0"
-        android:layout_marginStart="@dimen/_26sdp"
-        android:layout_marginTop="@dimen/_5sdp"/>
+        <TextView
+            android:id="@+id/view_members"
+            android:paddingVertical="15dp"
+            android:paddingHorizontal="26dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:fontFamily="@font/roboto_regular"
+            android:text="@string/view_members"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
 
-    <View
-        android:id="@+id/lineDivider3"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_1sdp"
-        android:background="@color/purple_dark"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vm"
-        app:layout_constraintVertical_bias="0.00"
-        android:layout_marginHorizontal="@dimen/_26sdp"
-        android:layout_marginTop="@dimen/_5sdp"/>
+        <include layout="@layout/line_margin"/>
 
-    <TextView
-        android:id="@+id/ct"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Close thread"
-        android:textColor="@color/white"
-        android:fontFamily="@font/roboto_medium"
-        android:textSize="@dimen/_15ssp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/lineDivider3"
-        app:layout_constraintVertical_bias="0"
-        android:layout_marginStart="@dimen/_26sdp"
-        android:layout_marginTop="@dimen/_5sdp"/>
+        <TextView
+            android:id="@+id/leave_thread"
+            android:paddingVertical="15dp"
+            android:paddingHorizontal="26dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:fontFamily="@font/roboto_regular"
+            android:text="@string/leave_thread"
+            android:textColor="@color/orange_light"
+            android:textSize="18sp" />
 
-    <View
-        android:id="@+id/lineDivider4"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_1sdp"
-        android:background="@color/purple_dark"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ct"
-        app:layout_constraintVertical_bias="0.00"
-        android:layout_marginHorizontal="@dimen/_26sdp"
-        android:layout_marginTop="@dimen/_5sdp"/>
+        <include layout="@layout/line_margin"/>
 
-    <TextView
-        android:id="@+id/lt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Leave thread"
-        android:textColor="@color/white"
-        android:fontFamily="@font/roboto_medium"
-        android:textSize="@dimen/_15ssp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/lineDivider4"
-        app:layout_constraintVertical_bias="0"
-        android:layout_marginStart="@dimen/_26sdp"
-        android:layout_marginTop="@dimen/_5sdp"/>
+        <TextView
+            android:id="@+id/close_thread"
+            android:paddingVertical="15dp"
+            android:paddingHorizontal="26dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:fontFamily="@font/roboto_regular"
+            android:text="@string/close_thread"
+            android:textColor="@color/orange_yellow"
+            android:textSize="18sp" />
 
-    <View
-        android:id="@+id/lineDivider5"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_1sdp"
-        android:background="@color/purple_dark"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lt"
-        app:layout_constraintVertical_bias="0.00"
-        android:layout_marginHorizontal="@dimen/_26sdp"
-        android:layout_marginTop="@dimen/_5sdp"/>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
