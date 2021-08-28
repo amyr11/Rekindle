@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.runtimeterror.rekindle">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -13,16 +14,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Rekindle">
         <activity
+            android:name=".CreateFlashcardThread"
+            android:exported="true" />
+        <activity
             android:name=".ThreadSettings"
             android:exported="true" />
         <activity
             android:name=".ThreadGroupChat"
             android:exported="true"
-            android:windowSoftInputMode="adjustResize"/>
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".EditFlashcard"
             android:exported="true"
-            android:windowSoftInputMode="adjustResize"/>
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".EditFlashcardCollection"
             android:exported="true"
@@ -86,7 +90,5 @@
             </intent-filter>
         </service>
     </application>
-
-    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>
