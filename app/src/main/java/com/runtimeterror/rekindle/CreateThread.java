@@ -77,9 +77,10 @@ public class CreateThread extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<DocumentReference> task) {
                         if (task.isSuccessful()) {
-                            //increment user's thread count
+                            //append this thread to user's thread array
+                            String threadID = task.getResult().getId();
                             db.getUserDocRef()
-                                    .update(Constants.FIELD_THREAD_COUNT, FieldValue.increment(1));
+                                    .update(Constants.COL_THREADS, FieldValue.arrayUnion(threadID));
                             //open copy thread code activity
                             Intent intent = new Intent(getApplicationContext(), CopyThreadCode.class);
                             intent.putExtra("threadCode", task.getResult().getId());

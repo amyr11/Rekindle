@@ -1,10 +1,13 @@
 package com.runtimeterror.rekindle;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class UserInfo {
     private String userID;
     private String username;
     private String photoURL;
-    private int threadCount;
+    private List<String> threads;
     private int points;
     private boolean competitive;
     private int goldCnt;
@@ -17,12 +20,12 @@ public class UserInfo {
         this.userID = userID;
         this.username = username;
         this.photoURL = photoURL;
-        this.threadCount = 0;
         this.points = 0;
         this.competitive = false;
         this.goldCnt = 0;
         this.silverCnt = 0;
         this.bronzeCnt = 0;
+        this.threads = new ArrayList<>();
     }
 
     public int getGoldCnt() {
@@ -73,14 +76,6 @@ public class UserInfo {
         this.photoURL = photoURL;
     }
 
-    public int getThreadCount() {
-        return threadCount;
-    }
-
-    public void setThreadCount(int threadCount) {
-        this.threadCount = threadCount;
-    }
-
     public int getPoints() {
         return points;
     }
@@ -95,5 +90,13 @@ public class UserInfo {
 
     public void setCompetitive(boolean competitive) {
         this.competitive = competitive;
+    }
+
+    public List<String> getThreads() {
+        return threads;
+    }
+
+    public void setThreads(List<String> threads) {
+        this.threads = threads;
     }
 }

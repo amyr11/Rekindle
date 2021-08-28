@@ -64,9 +64,9 @@ public class JoinExistingThread extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            //increment user's thread count
+                            //append this thread to user's thread array
                             db.getUserDocRef()
-                                    .update(Constants.FIELD_THREAD_COUNT, FieldValue.increment(1));
+                                    .update(Constants.COL_THREADS, FieldValue.arrayUnion(threadCodeString));
                             CreateThread.finishActivity();
                             finish();
                             Toast.makeText(getApplicationContext(), "Joined thread.", Toast.LENGTH_SHORT).show();
