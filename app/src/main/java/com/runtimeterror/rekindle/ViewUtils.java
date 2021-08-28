@@ -26,6 +26,32 @@ public class ViewUtils {
         headerTitle.setText(title);
     }
 
+    public static void setHeaderChats(Activity activity, String title) {
+        ImageButton backButton = activity.findViewById(R.id.button_back);
+        ImageButton viewFlashcards = activity.findViewById(R.id.button_view_flashcards);
+        ImageButton more = activity.findViewById(R.id.button_more);
+        TextView headerTitle = activity.findViewById(R.id.header_title);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                activity.finish();
+            }
+        });
+        viewFlashcards.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //TODO: open all flashcards activity in thread
+            }
+        });
+        more.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //TODO: open thread menu activity
+            }
+        });
+        headerTitle.setText(title);
+    }
+
     public static SwitchCompat getSwitchView(Activity activity, int viewId, String title) {
         View parent = activity.findViewById(viewId);
         TextView titleView = parent.findViewById(R.id.title);
