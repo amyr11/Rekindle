@@ -1,12 +1,10 @@
 package com.runtimeterror.rekindle;
 
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
-import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -16,16 +14,12 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.auth.User;
-import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.net.URL;
@@ -83,7 +77,7 @@ public class MembersAdapter extends RecyclerView.Adapter<MembersAdapter.MemberVi
         }
 
         private void kickMember() {
-            db.kickMemberFromThread(
+            db.removeMemberFromThread(
                     threadID,
                     member.getUserID(),
                     new OnCompleteListener<Void>() {

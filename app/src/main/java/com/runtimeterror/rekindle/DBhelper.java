@@ -34,7 +34,7 @@ public class DBhelper {
         flashcardCollectionsColRef = userDocRef.collection(Constants.COL_FLASHCARD_COLLECTIONS);
     }
 
-    public void kickMemberFromThread(
+    public void removeMemberFromThread(
             String threadID,
             String userID,
             OnCompleteListener<Void> threadUpdateListener,
