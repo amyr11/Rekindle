@@ -6,11 +6,13 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class Constants {
     public static String TAG = "RekindleTag";
     public static String COL_THREADS = "threads";
+    public static String COL_MESSAGES = "messages";
     public static String THREAD_CLOSED = "closed";
     public static String THREAD_OPEN = "open";
     public static String FIELD_STATUS = "status";
     public static String FIELD_MEMBERS = "members";
     public static String FIELD_USERNAME = "username";
+    public static String FIELD_SENT_AT = "sentAt";
     public static String COL_USERS = "users";
     public static String COL_FLASHCARD_COLLECTIONS = "flashcardCollections";
     public static String COL_FLASHCARD_LIST = "flashcards";

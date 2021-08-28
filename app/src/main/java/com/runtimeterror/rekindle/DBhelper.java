@@ -89,4 +89,8 @@ public class DBhelper {
     public DocumentReference getThreadDocRef(String threadID) {
         return getThreadsColRef().document(threadID);
     }
+
+    public CollectionReference getMessagesColRef(String threadID) {
+        return getThreadDocRef(threadID).collection(Constants.COL_MESSAGES);
+    }
 }
