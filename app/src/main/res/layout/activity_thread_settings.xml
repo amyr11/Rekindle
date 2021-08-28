@@ -68,8 +68,6 @@
             android:textColor="@color/orange_light"
             android:textSize="18sp" />
 
-        <include layout="@layout/line_margin"/>
-
         <TextView
             android:id="@+id/close_thread"
             android:paddingVertical="15dp"

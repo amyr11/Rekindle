@@ -52,6 +52,7 @@ public class ThreadsAdapter extends RecyclerView.Adapter<ThreadsAdapter.ThreadVi
                 Intent intent = new Intent(context, ThreadGroupChat.class);
                 intent.putExtra("threadName", ViewUtils.limitChars(current.getName(), 15));
                 intent.putExtra("threadID", current.getId());
+                intent.putExtra("isOwned", current.isOwned());
                 context.startActivity(intent);
             }
         });

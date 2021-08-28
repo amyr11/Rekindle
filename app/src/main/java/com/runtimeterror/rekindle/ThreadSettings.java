@@ -20,6 +20,7 @@ import com.google.android.gms.tasks.Task;
 public class ThreadSettings extends AppCompatActivity {
     private TextView copyThreadCode, viewMembers, leaveThread, closeThread;
     private String threadID;
+    private boolean isOwned;
     private DBhelper db = new DBhelper();
     private boolean removedUserFromThread = false, removedThreadFromUser = false;
 
@@ -28,6 +29,8 @@ public class ThreadSettings extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thread_settings);
         threadID = getIntent().getStringExtra("threadID");
+        isOwned = getIntent().getBooleanExtra("isOwned", false);
+
         ViewUtils.setHeader(this, "Thread menu");
         copyThreadCode = findViewById(R.id.copy_thread_code);
         copyThreadCode.setOnClickListener(new View.OnClickListener() {
@@ -50,29 +53,36 @@ public class ThreadSettings extends AppCompatActivity {
             }
         });
         leaveThread = findViewById(R.id.leave_thread);
-        leaveThread.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new AlertDialog.Builder(leaveThread.getContext())
-                        .setTitle("Leave Thread")
-                        .setMessage("Are you sure you want to leave this thread?")
-                        .setPositiveButton("Cancel", null)
-                        .setNegativeButton("Leave", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                leaveThread();
-                            }
-                        })
-                        .show();
-            }
-        });
         closeThread = findViewById(R.id.close_thread);
-        closeThread.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //TODO: close thread
-            }
-        });
+        if (!isOwned) {
+            leaveThread.setVisibility(View.VISIBLE);
+            closeThread.setVisibility(View.GONE);
+            leaveThread.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    new AlertDialog.Builder(leaveThread.getContext())
+                            .setTitle("Leave Thread")
+                            .setMessage("Are you sure you want to leave this thread?")
+                            .setPositiveButton("Cancel", null)
+                            .setNegativeButton("Leave", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    leaveThread();
+                                }
+                            })
+                            .show();
+                }
+            });
+        } else {
+            leaveThread.setVisibility(View.GONE);
+            closeThread.setVisibility(View.VISIBLE);
+            closeThread.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //TODO: close thread
+                }
+            });
+        }
     }
 
     private void leaveThread() {

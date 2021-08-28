@@ -10,12 +10,16 @@ import java.util.List;
 public class RekindleThread {
     @Exclude
     private String id;
+
+    @Exclude
+    private boolean isOwned;
     @ServerTimestamp
     private Date createdAt;
     private String createdBy;
     private String name;
     private int theme;
     private List<String> members;
+
 
     public RekindleThread() {}
 
@@ -86,5 +90,13 @@ public class RekindleThread {
 
     public void setCreatedBy(String createdBy) {
         this.createdBy = createdBy;
+    }
+
+    public boolean isOwned() {
+        return isOwned;
+    }
+
+    public void setOwned(boolean owned) {
+        isOwned = owned;
     }
 }

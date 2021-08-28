@@ -27,7 +27,7 @@ public class ViewUtils {
         headerTitle.setText(title);
     }
 
-    public static void setHeaderChats(Activity activity, String title, String threadID) {
+    public static void setHeaderChats(Activity activity, String title, String threadID, boolean isOwned) {
         ImageButton backButton = activity.findViewById(R.id.button_back);
         ImageButton viewFlashcards = activity.findViewById(R.id.button_view_flashcards);
         ImageButton more = activity.findViewById(R.id.button_more);
@@ -49,6 +49,7 @@ public class ViewUtils {
             public void onClick(View v) {
                 Intent intent = new Intent(activity.getApplicationContext(), ThreadSettings.class);
                 intent.putExtra("threadID", threadID);
+                intent.putExtra("isOwned", isOwned);
                 activity.startActivity(intent);
             }
         });

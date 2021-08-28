@@ -11,8 +11,9 @@ public class ThreadGroupChat extends AppCompatActivity {
     private RecyclerView chatsRecyclerView;
     private ImageButton sendFlashcardButton, sendMessageButton;
     private EditText chatInput;
-    private String threadName;
     private String threadID;
+    private String threadName;
+    private boolean isOwned;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +22,8 @@ public class ThreadGroupChat extends AppCompatActivity {
 
         threadName = getIntent().getStringExtra("threadName");
         threadID = getIntent().getStringExtra("threadID");
-        ViewUtils.setHeaderChats(this, "# " + threadName, threadID);
+        isOwned = getIntent().getBooleanExtra("isOwned", false);
+        ViewUtils.setHeaderChats(this, "# " + threadName, threadID, isOwned);
         sendFlashcardButton = findViewById(R.id.button_send_flashcard);
         sendMessageButton = findViewById(R.id.send_message);
         chatInput = findViewById(R.id.inputMessage);
