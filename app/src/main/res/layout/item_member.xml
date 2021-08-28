@@ -2,45 +2,71 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="@dimen/_4sdp"
     android:background="@color/purple_bg">
 
-    <com.makeramen.roundedimageview.RoundedImageView
-        android:id="@+id/imageProfile"
-        android:layout_width="@dimen/_25sdp"
-        android:layout_height="@dimen/_25sdp"
-        android:background="@drawable/ic_view_profile_picture_bg"
-        android:scaleType="centerCrop"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0"
-        app:riv_oval="true"/>
-
-    <TextView
-        android:id="@+id/user"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/profilePicContainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/roboto_medium"
-        android:text="Luwesss Francisco"
-        android:textSize="@dimen/_16ssp"
-        android:textColor="@color/white"
-        app:layout_constraintStart_toEndOf="@id/imageProfile"
-        android:layout_marginStart="@dimen/_10sdp"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-    <ImageView
-        android:layout_width="@dimen/_4sdp"
-        android:layout_height="@dimen/_18sdp"
-        android:layout_marginEnd="26dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:cardCornerRadius="100dp"
+        app:cardElevation="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        android:src="@drawable/ic_button_more"
-        app:layout_constraintHorizontal_bias="1" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.523">
+
+        <ImageView
+            android:id="@+id/profile_pic"
+            android:layout_width="30dp"
+            android:layout_height="30dp"/>
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/member_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:fontFamily="@font/roboto_regular"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:text="Amyr Edmar Francisco"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/profilePicContainer"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.52" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
+        app:cardBackgroundColor="@color/purple_bg"
+        app:cardCornerRadius="100dp"
+        app:cardElevation="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/member_name"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.476">
+
+        <ImageButton
+            android:id="@+id/button_more"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@null"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:src="@drawable/ic_button_more" />
+
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
