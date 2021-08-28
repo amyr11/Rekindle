@@ -27,7 +27,7 @@ public class ViewUtils {
         headerTitle.setText(title);
     }
 
-    public static void setHeaderChats(Activity activity, String title) {
+    public static void setHeaderChats(Activity activity, String title, String threadID) {
         ImageButton backButton = activity.findViewById(R.id.button_back);
         ImageButton viewFlashcards = activity.findViewById(R.id.button_view_flashcards);
         ImageButton more = activity.findViewById(R.id.button_more);
@@ -47,8 +47,9 @@ public class ViewUtils {
         more.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO: open thread menu activity
+                //TODO: pass intent extra
                 Intent intent = new Intent(activity.getApplicationContext(), ThreadSettings.class);
+                intent.putExtra("threadID", threadID);
                 activity.startActivity(intent);
             }
         });

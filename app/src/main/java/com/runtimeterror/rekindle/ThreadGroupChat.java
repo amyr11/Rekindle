@@ -21,7 +21,7 @@ public class ThreadGroupChat extends AppCompatActivity {
 
         threadName = getIntent().getStringExtra("threadName");
         threadID = getIntent().getStringExtra("threadID");
-        ViewUtils.setHeaderChats(this, "# " + threadName);
+        ViewUtils.setHeaderChats(this, "# " + threadName, threadID);
         sendFlashcardButton = findViewById(R.id.button_send_flashcard);
         sendMessageButton = findViewById(R.id.send_message);
         chatInput = findViewById(R.id.inputMessage);
