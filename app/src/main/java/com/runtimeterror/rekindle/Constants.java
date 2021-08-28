@@ -6,8 +6,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class Constants {
     public static String TAG = "RekindleTag";
     public static String COL_THREADS = "threads";
-    public static String FIELD_THREAD_COUNT = "threadCount";
     public static String FIELD_MEMBERS = "members";
+    public static String FIELD_USERNAME = "username";
     public static String COL_USERS = "users";
     public static String COL_FLASHCARD_COLLECTIONS = "flashcardCollections";
     public static String COL_FLASHCARD_LIST = "flashcards";

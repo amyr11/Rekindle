@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -35,6 +36,10 @@ public class ThreadSettings extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //TODO: open view all members activity
+                Context context = viewMembers.getContext();
+                Intent intent = new Intent(context, MembersPanel.class);
+                intent.putExtra("threadID", threadID);
+                context.startActivity(intent);
             }
         });
         leaveThread = findViewById(R.id.leave_thread);

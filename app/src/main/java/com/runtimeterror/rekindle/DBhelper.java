@@ -11,8 +11,10 @@ public class DBhelper {
     private FirebaseAuth auth;
     private FirebaseUser user;
 
+    private CollectionReference usersColRef;
     private DocumentReference userDocRef;
     private CollectionReference flashcardCollectionsColRef;
+
     private CollectionReference threadsColRef;
 
     public DBhelper() {
@@ -20,14 +22,18 @@ public class DBhelper {
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
 
-        userDocRef = db.collection(Constants.COL_USERS)
-                .document(user.getUid());
+        usersColRef = db.collection(Constants.COL_USERS);
+        userDocRef = usersColRef.document(user.getUid());
         threadsColRef = db.collection(Constants.COL_THREADS);
         flashcardCollectionsColRef = userDocRef.collection(Constants.COL_FLASHCARD_COLLECTIONS);
     }
 
     public FirebaseUser getUser() {
         return user;
+    }
+
+    public CollectionReference getUsersColRef() {
+        return usersColRef;
     }
 
     public DocumentReference getUserDocRef() {
