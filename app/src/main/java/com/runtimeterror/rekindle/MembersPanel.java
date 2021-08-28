@@ -13,6 +13,7 @@ import android.view.View;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -42,9 +43,24 @@ public class MembersPanel extends AppCompatActivity {
     }
 
     private void recyclerviewInit(List<UserInfo> members) {
-        membersAdapter = new MembersAdapter(this, members);
-        membersRecyclerview.setAdapter(membersAdapter);
-        membersRecyclerview.setLayoutManager(layoutManager);
+        //check if the user is the owner of the thread
+        DBhelper db = new DBhelper();
+        db.getThreadDocRef(threadID)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if (task.isSuccessful()) {
+                            String owner = task.getResult().toObject(RekindleThread.class).getCreatedBy().trim();
+                            String userID = db.getUser().getUid().trim();
+                            membersAdapter = new MembersAdapter(threadID, userID.equals(owner), members);
+                            membersRecyclerview.setAdapter(membersAdapter);
+                            membersRecyclerview.setLayoutManager(layoutManager);
+                        } else {
+                            Log.w(Constants.TAG, "Can't retrieve thread info", task.getException());
+                        }
+                    }
+                });
     }
 
     private void loadMembers(String threadID) {

@@ -94,6 +94,8 @@
         <entry key="app/src/main/res/layout/progress_bar.xml" value="0.2037037037037037" />
         <entry key="app/src/main/res/layout/save_cancel.xml" value="0.25" />
         <entry key="app/src/main/res/layout/text_with_switch.xml" value="0.25" />
+        <entry key="app/src/main/res/menu/bottom_menu.xml" value="0.2037037037037037" />
+        <entry key="app/src/main/res/menu/option_member.xml" value="0.2037037037037037" />
       </map>
     </option>
   </component>

@@ -53,4 +53,7 @@
     <string name="view_members">View members</string>
     <string name="close_thread">Close thread</string>
     <string name="leave_thread">Leave thread</string>
+    <string name="kick">Kick</string>
+    <string name="currentMember">currentMember</string>
+    <string name="threadID">threadID</string>
 </resources>

@@ -1,9 +1,15 @@
 package com.runtimeterror.rekindle;
 
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class DBhelper {
@@ -28,6 +34,21 @@ public class DBhelper {
         flashcardCollectionsColRef = userDocRef.collection(Constants.COL_FLASHCARD_COLLECTIONS);
     }
 
+    public void kickMemberFromThread(
+            String threadID,
+            String userID,
+            OnCompleteListener<Void> threadUpdateListener,
+            OnCompleteListener<Void> userUpdateListener) {
+        //remove userID from thread's member array
+        getThreadDocRef(threadID)
+                .update(Constants.FIELD_MEMBERS, FieldValue.arrayRemove(userID))
+                .addOnCompleteListener(threadUpdateListener);
+        //remove threadID on user's threads array
+        getUserDocRef(userID)
+                .update(Constants.COL_THREADS, FieldValue.arrayRemove(threadID))
+                .addOnCompleteListener(userUpdateListener);
+    }
+
     public FirebaseUser getUser() {
         return user;
     }
@@ -38,6 +59,10 @@ public class DBhelper {
 
     public DocumentReference getUserDocRef() {
         return userDocRef;
+    }
+
+    public DocumentReference getUserDocRef(String userID) {
+        return usersColRef.document(userID);
     }
 
     public CollectionReference getFlashcardCollectionsColRef() {
@@ -59,5 +84,9 @@ public class DBhelper {
 
     public CollectionReference getThreadsColRef() {
         return threadsColRef;
+    }
+
+    public DocumentReference getThreadDocRef(String threadID) {
+        return getThreadsColRef().document(threadID);
     }
 }
