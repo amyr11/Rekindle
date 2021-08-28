@@ -8,6 +8,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -63,6 +65,16 @@ public class ThreadGroupChat extends AppCompatActivity {
                     sendMessage(db.getUser().getUid(), message);
                     chatInput.setText("");
                 }
+            }
+        });
+
+        sendFlashcardButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Context context = sendFlashcardButton.getContext();
+                Intent intent = new Intent(context, CreateFlashcardThread.class);
+                intent.putExtra("threadID", threadID);
+                context.startActivity(intent);
             }
         });
     }

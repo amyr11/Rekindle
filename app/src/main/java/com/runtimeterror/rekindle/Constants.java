@@ -22,6 +22,8 @@ public class Constants {
     public static int BOX2_THRESHOLD = 2;
     public static int BOX3_THRESHOLD = 5;
     public static int THEME_COUNT = 5;
+    public static int TYPE_MESSAGE = 0;
+    public static int TYPE_FLASHCARD = 1;
     public static int ORANGE = 0;
     public static int PURPLE = 1;
     public static int ORANGE_YELLOW = 2;

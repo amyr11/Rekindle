@@ -68,11 +68,11 @@ public class CreateFlashcard extends AppCompatActivity {
     }
 
     //Override for thread
-    private CollectionReference getSubCollection() {
+    protected CollectionReference getSubCollection() {
         return db.getFlashcardListColRef(collectionID);
     }
 
-    private void addToCollection(Flashcard flashcard) {
+    protected void addToCollection(Flashcard flashcard) {
         getSubCollection()
                 .add(flashcard)
                 .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {

@@ -90,6 +90,10 @@ public class DBhelper {
         return getThreadsColRef().document(threadID);
     }
 
+    public CollectionReference getThreadFlashcardsColRef(String threadID) {
+        return getThreadsColRef().document(threadID).collection(Constants.COL_FLASHCARD_LIST);
+    }
+
     public CollectionReference getMessagesColRef(String threadID) {
         return getThreadDocRef(threadID).collection(Constants.COL_MESSAGES);
     }

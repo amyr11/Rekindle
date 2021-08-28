@@ -12,6 +12,8 @@ public class RekindleMessage {
     private Date sentAt;
     private String sentBy;
     private String message;
+    private String question;
+    private String answer;
     private int type;
 
     public RekindleMessage() {}
@@ -61,5 +63,21 @@ public class RekindleMessage {
 
     public void setType(int type) {
         this.type = type;
+    }
+
+    public String getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(String question) {
+        this.question = question;
+    }
+
+    public String getAnswer() {
+        return answer;
+    }
+
+    public void setAnswer(String answer) {
+        this.answer = answer;
     }
 }
