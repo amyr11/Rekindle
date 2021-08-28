@@ -8,7 +8,7 @@
         android:radius="17dp"
         />
     <size
-        android:height="35dp"
+        android:height="27dp"
         />
 
 </shape>
